@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Карточка номера | Room Card</title>
+   <link rel="stylesheet" href="./src/card.css">
+</head>
+<body>
+    <div class="card fade-in">
+        <div class="card-header">
+            <div class="badge" data-ru="Рекомендуемый номер" data-en="Recommended Room">Рекомендуемый номер</div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('ru')">РУС</button>
+                <button class="lang-btn" onclick="switchLanguage('en')">ENG</button>
+            </div>
+        </div>
+
+        <h1 data-ru="Номер «Standart-Samarkand»" data-en="Room «Standart-Samarkand»">Номер «Standart-Samarkand»</h1>
+
+        <div class="main-layout">
+            <div class="slider-wrapper">
+                <div class="slides" id="slides">
+                    <div class="slide" style="background-image: url('./public/image/1\ \(94\).jpg');"></div>
+                    <div class="slide" style="background-image: url('./public/image/5rooms.jpg');"></div>
+                    <div class="slide" style="background-image: url('./public/image/7rooms.jpg');"></div>
+                </div>
+                <div class="slider-nav">
+                    <button onclick="moveSlide(-1)">←</button>
+                    <button onclick="moveSlide(1)">→</button>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+
+            <div class="description-text">
+                <div data-ru="Этот номер — идеальный выбор для тех, кто ценит тишину и высокий статус окружения. Расположенный в самом сердце элитного района, он предлагает гостям исключительный уровень комфорта. Главная особенность — панорамные окна с безмятежным видом на ухоженный частный сад, что создает атмосферу загородного поместья." 
+                     data-en="This room is an ideal choice for those who appreciate tranquility and a prestigious environment. Located in the heart of an elite district, it offers guests an exceptional level of comfort. The main feature is panoramic windows with a serene view of a well-kept private garden, creating the atmosphere of a country estate.">
+                    Этот номер — идеальный выбор для тех, кто ценит тишину и высокий статус окружения. Расположенный в самом сердце элитного района, он предлагает гостям исключительный уровень комфорта. Главная особенность — панорамные окна с безмятежным видом на ухоженный частный сад, что создает атмосферу загородного поместья.
+                </div>
+
+
+<div class="occupancy-info">
+                    <p><strong data-ru="Максимальная вместимость" data-en="Maximum occupancy">Максимальная вместимость</strong> <span data-ru="— 4 человека (минимум 1 взрослый; максимум 3 взрослых)." data-en="— 4 persons (minimum 1 adult; maximum 3 adults).">— 4 человека (минимум 1 взрослый; максимум 3 взрослых).</span></p>
+                    <p><em data-ru="Например, 2 взрослых + 2 детей; 3 взрослых; или 1 взрослый + 3 детей. Гости старше 12 лет считаются взрослыми." 
+                           data-en="For example, 2 adults + 2 children; 3 adults; or 1 adult + 3 children. Guests over 12 years old are considered adults.">
+                        Например, 2 взрослых + 2 детей; 3 взрослых; или 1 взрослый + 3 детей. Гости старше 12 лет считаются взрослыми.
+                    </em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+ <script src="./src/card.js"></script>
+</body>
+</html>

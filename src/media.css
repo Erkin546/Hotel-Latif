@@ -1,0 +1,164 @@
+@media (max-width: 1024px) {
+  #rooms .room-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .burger {
+      display: flex;
+  }
+
+  .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      padding: 100px 30px 30px;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 101;
+      transition: right 0.3s ease;
+      gap: 25px;
+      align-items: flex-start;
+  }
+
+  .nav-links.show {
+      right: 0;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+  
+  .lang-switch {
+    margin-left: 0;
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+  
+  .book-now-btn {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  #rooms .room-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews-container {
+      grid-template-columns: 1fr;
+  }
+
+  section {
+      padding: 60px 25px;
+  }
+
+  nav {
+      padding: 20px 25px;
+  }
+
+  .header-text {
+      font-size: 2rem;
+      padding: 20px;
+      width: 90%;
+  }
+  
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .about-text h2 {
+    text-align: center;
+  }
+  
+  .about-grid {
+    width: 100%;
+  }
+  
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .carousel-track img {
+    width: 250px;
+    height: 160px;
+  }
+  
+  @keyframes scroll {
+    100% {
+      transform: translateX(calc(-250px * 15 - 210px));
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #rooms .room-grid {
+      grid-template-columns: 1fr;
+  }
+
+  .header-text {
+      font-size: 1.6rem;
+      padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .gallery-modal .close {
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+  }
+  
+  .nav-logo {
+    font-size: 1.4rem;
+  }
+  
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-img {
+    height: 150px;
+  }
+  
+  .about-img-2 {
+    margin-top: 15px;
+  }
+  
+  .about-img-3 {
+    margin-top: -15px;
+  }
+  
+  .carousel-track img {
+    width: 200px;
+    height: 130px;
+  }
+  
+  @keyframes scroll {
+    100% {
+      transform: translateX(calc(-200px * 15 - 210px));
+    }
+  }
+  
+  .qr-container {
+    gap: 20px;
+  }
+  
+  .qr-item img {
+    width: 100px;
+    height: 100px;
+  }
+}
