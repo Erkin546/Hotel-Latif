@@ -50,7 +50,7 @@ const translations = {
     'nav.reviews': 'Отзывы',
     'nav.location': 'Локация',
     'nav.contact': 'Контакты',
-    'header.title': 'Комфорт в сердце Самарканда',
+    'header.title': 'Hotel Latif Samarkand — место, где история, комфорт и искренняя забота встречают каждого гостя.',
     'rooms.title': 'Номера',
     'rooms.details': 'Подробнее',
     'gallery.title': 'Галерея',
@@ -71,12 +71,15 @@ const translations = {
     'contact.title': 'Контакты',
     'contact.phones': 'Телефоны:',
     'about.title': 'О нас',
-    'about.text1': 'Отель Latif Samarkand — это уникальное сочетание восточного гостеприимства и современного комфорта. Расположенный в историческом сердце Самарканда, наш отель предлагает своим гостям уютные номера, внимательный сервис и незабываемую атмосферу древнего города.',
-    'about.text2': 'Мы гордимся своим расположением — всего в 10 минутах ходьбы от площади Регистан, в тихом и спокойном районе. Каждый номер оформлен с учётом национальных традиций и оснащён всем необходимым для комфортного проживания.',
-    'about.feature1': 'Бесплатный Wi-Fi',
-    'about.feature2': 'Завтрак включён',
-    'about.feature3': 'Круглосуточная стойка регистрации',
-    'about.feature4': 'Трансфер от/до аэропорта'
+    'about.text1': 'Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях. Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием.',
+    'about.text2': 'Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха. Наша команда делает всё возможное, чтобы каждый гость почувствовал атмосферу уюта и настоящее самаркандское гостеприимство.Независимо от того, приезжаете ли вы в Самарканд впервые или возвращаетесь сюда снова, мы будем рады приветствовать вас как дорогого гостя!',
+    'about.feature1': 'Бесплатный Wi-Fi на всей территории отеля',
+    'about.feature2': 'Круглосуточная стойка регистрации',
+    'about.feature3': 'Бесплатная парковка',
+    'about.feature4': 'Трансфер из/в аэропорт по запросу',
+    'about.feature5': 'Уютный внутренний двор для отдыха',
+    'about.feature6': 'Завтрак для гостей',
+    'about.feature7': 'Дружелюбный персонал'
   },
   en: {
     'nav.home': 'Home',
@@ -85,7 +88,7 @@ const translations = {
     'nav.reviews': 'Reviews',
     'nav.location': 'Location',
     'nav.contact': 'Contact',
-    'header.title': 'Comfort in the heart of Samarkand',
+    'header.title': 'Hotel Latif Samarkand — where history, comfort, and genuine hospitality meet.',
     'rooms.title': 'Rooms',
     'rooms.details': 'Details',
     'gallery.title': 'Gallery',
@@ -106,12 +109,15 @@ const translations = {
     'contact.title': 'Contact',
     'contact.phones': 'Phones:',
     'about.title': 'About Us',
-    'about.text1': 'Hotel Latif Samarkand is a unique combination of oriental hospitality and modern comfort. Located in the historical heart of Samarkand, our hotel offers cozy rooms, attentive service and an unforgettable atmosphere of the ancient city.',
-    'about.text2': 'We are proud of our location — just a 10-minute walk from Registan Square, in a quiet and peaceful area. Each room is decorated with national traditions and equipped with everything necessary for a comfortable stay.',
-    'about.feature1': 'Free Wi-Fi',
-    'about.feature2': 'Breakfast included',
-    'about.feature3': '24-hour front desk',
-    'about.feature4': 'Airport transfer'
+    'about.text1': "Hotel Latif Samarkand is a place where the ancient beauty of Samarkand welcomes you together with the warmth of a family home. Our family hotel opened its doors in July 2010. Since then, it has become a home away from home for hundreds of travelers from around the world who were looking not just for accommodation, but for comfort, care, and sincere hospitality. We believe that a hotel should be more than a place to sleep. It should be a place where guests feel relaxed, welcomed, and supported during their journey. ",
+    'about.text2': 'Hotel Latif Samarkand offers 18 bright and comfortable rooms equipped with everything you need for a pleasant and relaxing stay. Our team does everything possible to ensure that each guest enjoys a peaceful atmosphere and authentic Samarkand hospitality. Whether you are visiting Samarkand for the first time or returning again, we are happy to welcome you as our guest.',
+    'about.feature1': 'Free Wi‑Fi throughout the property',
+    'about.feature2': 'Free parking',
+    'about.feature3': '24‑hour front desk',
+    'about.feature4': 'Airport shuttle upon request',
+    'about.feature5': 'Cozy courtyard for relaxing',
+    'about.feature6': 'Breakfast available',
+    'about.feature7': 'Friendly staff always ready to help'
   }
 };
 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Standard Double Room | Карточка номера</title>
+   <link rel="stylesheet" href="/src/card.css">
+   <link rel="stylesheet" href="/src/media card.css">
+</head>
+<body>
+<div class="card fade-in" id="roomCard">
+    <div class="card-header">
+        <div class="badge" id="badgeElement">⭐️ Рекомендуемый номер</div>
+        <div class="lang-switcher" id="langSwitcher">
+            <button class="lang-btn" data-lang="ru">РУС</button>
+            <button class="lang-btn" data-lang="en">ENG</button>
+        </div>
+    </div>
+
+    <h1 id="roomTitle">Номер «Стандартный двухместный»</h1>
+
+    <div class="main-layout">
+        <div class="slider-wrapper">
+            <div class="slides" id="slides">
+                <div class="slide" style="background-image: url('/public/image/1\ \(94\).jpg');"></div>
+                <div class="slide" style="background-image: url('/public/image/5rooms.jpg');"></div>
+                <div class="slide" style="background-image: url('/public/image/7rooms.jpg');"></div>
+            </div>
+            <div class="slider-nav">
+                <button class="prev-slide" aria-label="Previous slide">←</button>
+                <button class="next-slide" aria-label="Next slide">→</button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <div class="description-block">
+            <div class="description-text" id="descriptionText"></div>
+            <!-- Кнопка бронирования как ссылка <a> с синим градиентом -->
+            <a href="#" id="whatsappBookLink" class="book-link" target="_blank" rel="noopener noreferrer">Забронировать</a>
+        </div>
+    </div>
+</div>
+<script>
+ 
+/**
+ * CONFIGURATION & TEXTS
+ */
+ const CONFIG = {
+    PHONE_NUMBER: '998901234567',
+    DEFAULT_LANG: 'ru',
+    TOUCH_THRESHOLD: 45
+};
+
+const TRANSLATIONS = {
+    ru: {
+        roomTitle: "Номер «Улучшенный двухместный номер с балконом»",
+        badge: "⭐️ Рекомендуемый номер",
+        description:`Светлый и стильный номер повышенной комфортности с собственным балконом и красивым видом из окна. Идеальный выбор для пар, которые хотят сделать своё путешествие в Самарканд особенно приятным.<br>
+Удобства номера:  <br>
+•	Просторная двуспальная кровать<br>
+•	Балкон с красивым видом<br>
+•	Собственная ванная комната<br>
+•	Кондиционер<br>
+•	Телевизор с плоским экраном<br>
+•	Бесплатный Wi Fi<br>
+•	Шкаф для одежды<br>
+•	Рабочий стол<br>
+•	Полотенца и туалетные принадлежности<br>
+Номер создан для тех, кто ценит уют, пространство и возможность наслаждаться видом на город. <br>
+`,
+        bookButton: "Забронировать",
+        whatsappMessage: "Здравствуйте! Хочу забронировать номер «Стандартный двухместный»."
+    },
+    en: {
+        roomTitle: "Room «Superior Double Room with Balcony»",
+        badge: "⭐️ Recommended Room",
+        description: `A bright and stylish superior room with a private balcony and a beautiful view. An excellent choice for couples who want to make their trip to Samarkand especially memorable.  <br>
+Room features: <br>
+•	Spacious double bed<br>
+•	Balcony with a beautiful view<br>
+•	Private bathroom<br>
+•	Air conditioning<br>
+•	Flat screen TV<br>
+•	Free Wi Fi<br>
+•	Wardrobe<br>
+•	Work desk<br>
+•	Towels and toiletries<br>
+Designed for guests who value comfort, space, and the opportunity to enjoy the view of the city. <br>
+`,
+        bookButton: "Book now",
+        whatsappMessage: "Hello! I would like to book the “Standard Double Room”."
+    }
+};
+
+/**
+ * STATE & ELEMENTS
+ */
+let state = {
+    currentLang: CONFIG.DEFAULT_LANG,
+    currentSlide: 0,
+    totalSlides: 0
+};
+
+const elements = {
+    roomTitle: document.getElementById('roomTitle'),
+    badge: document.getElementById('badgeElement'),
+    description: document.getElementById('descriptionText'),
+    bookLink: document.getElementById('whatsappBookLink'),
+    slidesContainer: document.getElementById('slides'),
+    dotsContainer: document.getElementById('sliderDots'),
+    langButtons: document.querySelectorAll('.lang-btn')
+};
+
+/**
+ * FUNCTIONS
+ */
+function updateWhatsAppLink() {
+    if (!elements.bookLink) return;
+    const t = TRANSLATIONS[state.currentLang];
+    const message = encodeURIComponent(t.whatsappMessage);
+    elements.bookLink.href = `https://wa.me/${CONFIG.PHONE_NUMBER}?text=${message}`;
+}
+
+function switchLanguage(lang) {
+    const t = TRANSLATIONS[lang];
+    if (!t) return;
+
+    state.currentLang = lang;
+
+    // Обновление контента
+    if (elements.roomTitle) elements.roomTitle.textContent = t.roomTitle;
+    if (elements.badge) elements.badge.textContent = t.badge;
+    if (elements.description) elements.description.innerHTML = t.description;
+    if (elements.bookLink) elements.bookLink.textContent = t.bookButton;
+
+    // Активная кнопка
+    elements.langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    updateWhatsAppLink();
+}
+
+function goToSlide(index) {
+    if (!elements.slidesContainer || state.totalSlides === 0) return;
+    
+    state.currentSlide = (index + state.totalSlides) % state.totalSlides;
+    elements.slidesContainer.style.transform = `translateX(${state.currentSlide * -100}%)`;
+    
+    const dots = elements.dotsContainer?.querySelectorAll('.dot');
+    dots?.forEach((dot, idx) => dot.classList.toggle('active', idx === state.currentSlide));
+}
+
+function initSlider() {
+    const slides = document.querySelectorAll('.slide');
+    state.totalSlides = slides.length;
+    if (state.totalSlides === 0) return;
+
+    // Создание точек
+    if (elements.dotsContainer) {
+        elements.dotsContainer.innerHTML = '';
+        for (let i = 0; i < state.totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToSlide(i);
+            elements.dotsContainer.appendChild(dot);
+        }
+    }
+
+    // Навигация
+    document.querySelector('.prev-slide')?.addEventListener('click', () => goToSlide(state.currentSlide - 1));
+    document.querySelector('.next-slide')?.addEventListener('click', () => goToSlide(state.currentSlide + 1));
+
+    // Свайпы
+    let startX = 0;
+    elements.slidesContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
+    elements.slidesContainer.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > CONFIG.TOUCH_THRESHOLD) goToSlide(state.currentSlide + (diff > 0 ? 1 : -1));
+    }, {passive: true});
+}
+
+/**
+ * INIT
+ */
+function init() {
+    initSlider();
+    elements.langButtons.forEach(btn => {
+        btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+    });
+    switchLanguage(CONFIG.DEFAULT_LANG);
+}
+
+document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
+
+</script>
+</body>
+</html>
