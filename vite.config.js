@@ -6,8 +6,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        room: resolve(__dirname, 'src/pages/room/index.html'),
+        room: resolve(__dirname, 'src/pages/room/room1.html'),
+        room: resolve(__dirname, 'src/pages/room/room2.html'),
+        room: resolve(__dirname, 'src/pages/room/room3.html'),
+        room: resolve(__dirname, 'src/pages/room/room4.html'),
+        room: resolve(__dirname, 'src/pages/room/room5.html'),
+        room: resolve(__dirname, 'src/pages/room/room6.html'),
       }
     }
   }
 })
+
