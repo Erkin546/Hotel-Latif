@@ -35,16 +35,14 @@
 
         <div class="description-block">
             <div class="description-text" id="descriptionText"></div>
-            <!-- Кнопка бронирования как ссылка <a> с синим градиентом -->
+         
             <a href="#" id="whatsappBookLink" class="book-link" target="_blank" rel="noopener noreferrer">Забронировать</a>
         </div>
     </div>
 </div>
 <script>
  
-/**
- * CONFIGURATION & TEXTS
- */
+
  const CONFIG = {
     PHONE_NUMBER: '998901234567',
     DEFAULT_LANG: 'ru',
@@ -92,9 +90,7 @@ Designed for guests who value comfort, space, and the opportunity to enjoy the v
     }
 };
 
-/**
- * STATE & ELEMENTS
- */
+
 let state = {
     currentLang: CONFIG.DEFAULT_LANG,
     currentSlide: 0,
@@ -111,9 +107,7 @@ const elements = {
     langButtons: document.querySelectorAll('.lang-btn')
 };
 
-/**
- * FUNCTIONS
- */
+
 function updateWhatsAppLink() {
     if (!elements.bookLink) return;
     const t = TRANSLATIONS[state.currentLang];
@@ -127,13 +121,13 @@ function switchLanguage(lang) {
 
     state.currentLang = lang;
 
-    // Обновление контента
+
     if (elements.roomTitle) elements.roomTitle.textContent = t.roomTitle;
     if (elements.badge) elements.badge.textContent = t.badge;
     if (elements.description) elements.description.innerHTML = t.description;
     if (elements.bookLink) elements.bookLink.textContent = t.bookButton;
 
-    // Активная кнопка
+ 
     elements.langButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
@@ -156,7 +150,7 @@ function initSlider() {
     state.totalSlides = slides.length;
     if (state.totalSlides === 0) return;
 
-    // Создание точек
+ 
     if (elements.dotsContainer) {
         elements.dotsContainer.innerHTML = '';
         for (let i = 0; i < state.totalSlides; i++) {
@@ -167,11 +161,11 @@ function initSlider() {
         }
     }
 
-    // Навигация
+
     document.querySelector('.prev-slide')?.addEventListener('click', () => goToSlide(state.currentSlide - 1));
     document.querySelector('.next-slide')?.addEventListener('click', () => goToSlide(state.currentSlide + 1));
 
-    // Свайпы
+  
     let startX = 0;
     elements.slidesContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
     elements.slidesContainer.addEventListener('touchend', e => {
@@ -180,9 +174,7 @@ function initSlider() {
     }, {passive: true});
 }
 
-/**
- * INIT
- */
+
 function init() {
     initSlider();
     elements.langButtons.forEach(btn => {
