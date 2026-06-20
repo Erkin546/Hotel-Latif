@@ -1,226 +1,1454 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hotel Latif Samarkand</title>
- <link rel="stylesheet" href="./src/style.css">
- <link rel="stylesheet" href="./src/media.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Latif Samarkand</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #2c3e50;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+        }
+
+        .slider img {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slider img.active {
+            opacity: 1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .nav-logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            z-index: 102;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #ffd700;
+            transition: .3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .book-now-btn {
+            background: #ffd700;
+            color: #0f2027 !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 2px solid #ffd700;
+        }
+
+        .book-now-btn:hover {
+            background: transparent;
+            color: #ffd700 !important;
+            transform: scale(1.05);
+        }
+
+        .book-now-btn::after {
+            display: none;
+        }
+
+        .lang-switch {
+            background: transparent;
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-left: 15px;
+        }
+
+        .lang-switch:hover {
+            background: #ffd700;
+            color: #0f2027;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            z-index: 2;
+            max-width: 70%;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 102;
+            position: relative;
+        }
+
+        .burger div {
+            width: 100%;
+            height: 3px;
+            background-color: #ffd700;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .burger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger.active div:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .burger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        section {
+            padding: 90px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            margin: 60px auto;
+            width: 95%;
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .room {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .room:hover {
+            transform: translateY(-6px);
+        }
+
+        .room img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .room p {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 60s linear infinite;
+            width: fit-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-track img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-track img:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-300px * 15 - 210px));
+            }
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .review span {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #0f2027;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f2027;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f0f1f3;
+        }
+
+        .faq-question .arrow {
+            font-size: 1.5rem;
+            color: #ffd700;
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 25px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 20px 25px 25px;
+        }
+
+        .faq-answer strong {
+            color: #0f2027;
+        }
+
+        #contact {
+            background: #0f2027;
+            color: white;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .qr-codes {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .qr-item {
+            text-align: center;
+        }
+
+        .qr-item img {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .qr-item p {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        #location iframe {
+            border-radius: 20px;
+            border: none;
+        }
+
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .gallery-modal .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #about {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+        }
+
+        .about-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            font-size: 1rem;
+            color: #0f2027;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature::before {
+            content: "✓";
+            color: #ffd700;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .about-features-extra {
+            margin-top: 30px;
+            padding: 20px 25px;
+            background: #0f2027;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .about-features-extra h3 {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about-features-extra ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .about-features-extra ul li {
+            padding: 6px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-features-extra ul li:last-child {
+            border-bottom: none;
+        }
+
+        .about-features-extra ul li::before {
+            content: "•";
+            color: #ffd700;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .about-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-img-1 {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .about-img-2 {
+            grid-column: 2;
+            grid-row: 1;
+            margin-top: 30px;
+        }
+
+        .about-img-3 {
+            grid-column: 1;
+            grid-row: 2;
+            margin-top: -30px;
+        }
+
+        .about-img-4 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        @media (max-width: 1024px) {
+            #rooms .room-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .header-text {
+                max-width: 80%;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                padding: 100px 30px 30px;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 101;
+                transition: right 0.3s ease;
+                gap: 25px;
+                align-items: flex-start;
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .lang-switch {
+                margin-left: 0;
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+
+            .book-now-btn {
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            #rooms .room-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 25px;
+            }
+
+            nav {
+                padding: 20px 25px;
+            }
+
+            .header-text {
+                font-size: 1.6rem;
+                max-width: 90%;
+                padding: 0;
+                background: none;
+                text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            }
+
+            .about-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .about-text h2 {
+                text-align: center;
+            }
+
+            .about-grid {
+                width: 100%;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .carousel-track img {
+                width: 250px;
+                height: 160px;
+            }
+
+            @keyframes scroll {
+                100% {
+                    transform: translateX(calc(-250px * 15 - 210px));
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            #rooms .room-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-text {
+                font-size: 1.2rem;
+                max-width: 95%;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .gallery-modal .close {
+                top: 20px;
+                right: 20px;
+                font-size: 30px;
+            }
+
+            .nav-logo {
+                font-size: 1.4rem;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                height: 150px;
+            }
+
+            .about-img-2 {
+                margin-top: 15px;
+            }
+
+            .about-img-3 {
+                margin-top: -15px;
+            }
+
+            .carousel-track img {
+                width: 200px;
+                height: 130px;
+            }
+
+            @keyframes scroll {
+                100% {
+                    transform: translateX(calc(-200px * 15 - 210px));
+                }
+            }
+
+            .qr-container {
+                gap: 20px;
+            }
+
+            .qr-item img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="slider">
-    <img src="./image/1 (76).jpg" class="active">
-    <img src="./image/999.jpg">
-    <img src="./image/100.jpg">
-  </div>
-  <div class="header-overlay"></div>
- <nav>
-    <div class="nav-logo">Hotel Latif Samarkand</div>
-    <div class="burger" id="burger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    
-    <div class="nav-links" id="navLinks">
-      <a href="#home" data-key="nav.home">Главная</a>
-      <a href="#rooms" data-key="nav.rooms">Номера</a>
-      <a href="#gallery" data-key="nav.gallery">Галерея</a>
-      <a href="#reviews" data-key="nav.reviews">Отзывы</a>
-      <a href="#location" data-key="nav.location">Локация</a>
-      <a href="#contact" data-key="nav.contact">Контакты</a>
-      <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank">Book Now</a>
-      <button class="lang-switch" id="langToggle">En</button>
-    </div>
-  </nav>
-
-  <div class="header-text" data-key="header.title">
-    Hotel Latif Samarkand — место, где история, комфорт и искренняя забота встречают каждого гостя.
-  </div>
-</header>
-
-<section id="about">
-  <div class="about-container">
-    <div class="about-text">
-      <h2 data-key="about.title">О нас</h2>
-      <p class="about-description" data-key="about.text1">
-        Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях.
-        Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.
-        Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием.
-        
-      </p>
-      <p class="about-description" data-key="about.text2">
-        Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха. Наша команда делает всё возможное, чтобы каждый гость почувствовал атмосферу уюта и настоящее самаркандское гостеприимство.Независимо от того, приезжаете ли вы в Самарканд впервые или возвращаетесь сюда снова, мы будем рады приветствовать вас как дорогого гостя!
-      </p>
-      <div class="about-features">
-        <div class="feature" data-key="about.feature1">✓ Бесплатный Wi‑Fi на всей территории отеля</div>
-        <div class="feature" data-key="about.feature2">✓ Круглосуточная стойка регистрации</div>
-        <div class="feature" data-key="about.feature3">✓ Бесплатная парковка</div>
-        <div class="feature" data-key="about.feature4">✓ Трансфер от/до аэропорта</div>
-        <div class="feature" data-key="about.feature5">✓ Трансфер от/до аэропорта</div>
-        <div class="feature" data-key="about.feature6">✓ Трансфер от/до аэропорта</div>
-        <div class="feature" data-key="about.feature7">✓ Трансфер от/до аэропорта</div>
-      </div>
-    </div>
-    <div class="about-grid">
-      <img src="./image/about1.jpg" alt="Hotel Latif" class="about-img about-img-1">
-      <img src="./image/about2.jpg" alt="Hotel Latif" class="about-img about-img-2">
-      <img src="./image/about3.jpg" alt="Hotel Latif" class="about-img about-img-3">
-      <img src="./image/about4.jpg" alt="Hotel Latif" class="about-img about-img-4">
-    </div>
-  </div>
-</section>
-
-<section id="rooms">
-  <h2 data-key="rooms.title">Номера</h2>
-  <div class="room-grid">
-    <a href="src/pages/room/room1.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-
-    <a href="src/pages/room/room2.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-
-    <a href="src/pages/room/room3.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-
-    <a href="src/pages/room/room4.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-
-    <a href="src/pages/room/room5.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-
-    <a href="src/pages/room/room6.html" class="room-grid">
-      <div class="room">
-        <img src="./image/1 (89).jpg" alt="Standard Room">
-        <p data-key="rooms.details">Подробнее</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="gallery">
-  <h2 data-key="gallery.title">Галерея</h2>
-  <div class="carousel-container">
-    <div class="carousel-track" id="carouselTrack">
-    </div>
-  </div>
-</section>
-
-<section id="reviews">
-  <h2 data-key="reviews.title">Отзывы гостей</h2>
-  <div class="reviews-container">
-    <div class="review">
-      <p data-key="review1.text">
-        «Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место.»
-      </p>
-      <span data-key="review1.author">Шелихова. KZ — Оценка: 10 </span>
-    </div>
-    <div class="review">
-      <p data-key="review2.text">
-        «Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый. На все мои просьбы сразу отвечали. Очень красивый дворик и бассейн.»
- </p>
-      <span data-key="review2.author">Елена. BY — Оценка: 9.6</span>
-    </div>
-    <div class="review">
-      <p data-key="review3.text">
-        «Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома»
-      </p>
-      <span data-key="review3.author">Alex. USA — Оценка: 9.8</span>
-    </div>
-    <div class="review">
-      <p data-key="review4.text">
-        «Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные, разнообразные! Очень рекомендую!»
-      </p>
-      <span data-key="review4.author">Алиса и группа друзей — Оценка: 9.8</span>
-    </div>
-    <div class="review">
-      <p data-key="review5.text">
-        «Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома»
-      </p>
-      <span data-key="review5.author">Игорь. FIN — Оценка: 9.6</span>
-    </div>
-    <div class="review">
-      <p data-key="review6.text">
-        «Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Отель расположен в иранском квартале, рядом с центром плова, в шаговой доступности до Регистана (30 мин ходьбы). Скромная обстановка напоминает домашнюю. Тихое, чисто и уютное местечко»
-      </p>
-      <span data-key="review6.author">Элина. USA — Оценка: 10</span>
-    </div>
-  </div>
-</section>
-
-<section id="location">
-  <h2 data-key="location.title">Наше местоположение</h2>
-  <iframe
-    src="https://www.google.com/maps?q=Самарканд+Отель+Латиф&output=embed"
-    width="100%"
-    height="400"
-    loading="lazy">
-  </iframe>
-</section>
-
-<section id="contact">
-  <h2 data-key="contact.title">Контакты</h2>
-  <div class="contact-wrapper">
-    <div class="contact-info">
-      <div class="contact-item">
-        <strong>Instagram:</strong>
-        <a href="https://www.instagram.com/hotel_latif_samarkand" target="_blank">
-          instagram.com/hotel_latif_samarkand
-        </a>
-      </div>
-      <div class="contact-item">
-        <strong>Email:</strong>
-        <a href="mailto:hotel.latif.samarkand@gmail.com">
-          hotel.latif.samarkand@gmail.com
-        </a>
-      </div>
-      <div class="contact-item">
-        <strong data-key="contact.phones">Телефоны:</strong><br>
-        <a href="tel:+998913131783">+998 91 313 17 83</a><br>
-        <a href="tel:+998906068902">+998 90 606 89 02</a><br>
-        <a href="tel:+79014704882">+7 (901) 470-48-82</a>
-      </div>
-    </div>
-    <div class="qr-codes">
-      <h3 style="color: #ffd700; margin-bottom: 20px;">Свяжитесь с нами</h3>
-      <div class="qr-container">
-        <div class="qr-item">
-          <img src="./public/image/inst0.jpg" alt="WhatsApp QR">
-          <p>Instagram</p>
+    <header>
+        <div class="slider">
+            <img src="./image/1 (76).jpg" class="active" />
+            <img src="./image/999.jpg" />
+            <img src="./image/100.jpg" />
         </div>
-      </div>
+        <div class="header-overlay"></div>
+        <nav>
+            <div class="nav-logo">Hotel Latif Samarkand</div>
+            <div class="burger" id="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" data-key="nav.home">Главная</a>
+                <a href="#rooms" data-key="nav.rooms">Номера</a>
+                <a href="#gallery" data-key="nav.gallery">Галерея</a>
+                <a href="#reviews" data-key="nav.reviews">Отзывы</a>
+                <a href="#faq" data-key="nav.faq">FAQ</a>
+                <a href="#location" data-key="nav.location">Локация</a>
+                <a href="#contact" data-key="nav.contact">Контакты</a>
+                <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank">Book Now</a>
+                <button class="lang-switch" id="langToggle">En</button>
+            </div>
+        </nav>
+
+        <div class="header-text" data-key="header.title">
+            Hotel Latif Samarkand — история, комфорт и забота в сердце Самарканда.
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 data-key="about.title">О нас</h2>
+                <p class="about-description" data-key="about.text1">
+                    Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях.
+                    Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.
+                    Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием.
+                </p>
+                <p class="about-description" data-key="about.text2">
+                    Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха. Наша команда делает всё возможное, чтобы каждый гость почувствовал атмосферу уюта и настоящее самаркандское гостеприимство. Независимо от того, приезжаете ли вы в Самарканд впервые или возвращаетесь сюда снова, мы будем рады приветствовать вас как дорогого гостя!
+                </p>
+                <p class="about-description" data-key="about.text3">
+                    <strong>18 номеров · 7 категорий</strong><br />
+                    Все наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн.
+                </p>
+                <div class="about-features">
+                    <div class="feature" data-key="about.feature1">✓ Бесплатный Wi‑Fi на всей территории отеля</div>
+                    <div class="feature" data-key="about.feature2">✓ Круглосуточная стойка регистрации</div>
+                    <div class="feature" data-key="about.feature3">✓ Бесплатная парковка</div>
+                    <div class="feature" data-key="about.feature4">✓ Трансфер от/до аэропорта</div>
+                    <div class="feature" data-key="about.feature5">✓ Чай, кофе и вода в любое время</div>
+                    <div class="feature" data-key="about.feature6">✓ Завтрак включён в стоимость</div>
+                    <div class="feature" data-key="about.feature7">✓ Общая кухня и холодильник</div>
+                </div>
+
+                <!-- Дополнительно (платно) перенесено сюда -->
+                <div class="about-features-extra">
+                    <h3>Дополнительно (платно):</h3>
+                    <ul>
+                        <li>Трансфер от/до аэропорта и вокзала — детали уточняются при бронировании</li>
+                        <li>Сезонный открытый бассейн</li>
+                        <li>Сад с виноградником и розарием, тенистая терраса, общий лаундж</li>
+                        <li>Прачечная и химчистка</li>
+                        <li>Помощь в организации экскурсий, гида и транспорта по городу</li>
+                        <li>Хранение багажа</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-grid">
+                <img src="./image/about1.jpg" alt="Hotel Latif" class="about-img about-img-1" />
+                <img src="./image/about2.jpg" alt="Hotel Latif" class="about-img about-img-2" />
+                <img src="./image/about3.jpg" alt="Hotel Latif" class="about-img about-img-3" />
+                <img src="./image/about4.jpg" alt="Hotel Latif" class="about-img about-img-4" />
+            </div>
+        </div>
+    </section>
+
+    <section id="rooms">
+        <h2 data-key="rooms.title">Номера</h2>
+        <div class="room-grid">
+            <a href="src/pages/room/room1.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room2.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room3.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room4.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room5.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room6.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room7.html" class="room-grid">
+                <div class="room">
+                    <img src="./public/image/11room.jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room8.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room9.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room10.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room11.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room12.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room13.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room14.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room15.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room16.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room17.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+            <a href="src/pages/room/room18.html" class="room-grid">
+                <div class="room">
+                    <img src="./image/1 (89).jpg" alt="Standard Room" />
+                    <p data-key="rooms.details">Подробнее</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 data-key="gallery.title">Галерея</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h2 data-key="reviews.title">Отзывы гостей</h2>
+        <div class="reviews-container">
+            <div class="review">
+                <p data-key="review1.text">«Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место.»</p>
+                <span data-key="review1.author">Шелихова. KZ — Оценка: 10</span>
+            </div>
+            <div class="review">
+                <p data-key="review2.text">«Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый. На все мои просьбы сразу отвечали. Очень красивый дворик и бассейн.»</p>
+                <span data-key="review2.author">Елена. BY — Оценка: 9.6</span>
+            </div>
+            <div class="review">
+                <p data-key="review3.text">«Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома»</p>
+                <span data-key="review3.author">Alex. USA — Оценка: 9.8</span>
+            </div>
+            <div class="review">
+                <p data-key="review4.text">«Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные, разнообразные! Очень рекомендую!»</p>
+                <span data-key="review4.author">Алиса и группа друзей — Оценка: 9.8</span>
+            </div>
+            <div class="review">
+                <p data-key="review5.text">«Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома»</p>
+                <span data-key="review5.author">Игорь. FIN — Оценка: 9.6</span>
+            </div>
+            <div class="review">
+                <p data-key="review6.text">«Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Отель расположен в иранском квартале, рядом с центром плова, в шаговой доступности до Регистана (30 мин ходьбы). Скромная обстановка напоминает домашнюю. Тихое, чисто и уютное местечко»</p>
+                <span data-key="review6.author">Элина. USA — Оценка: 10</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2 data-key="faq.title">Часто задаваемые вопросы</h2>
+        <div class="faq-container">
+            <div class="faq-item active">
+                <div class="faq-question">
+                    <span data-key="faq.q1">Во сколько заезд и выезд?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a1">
+                    Заезд с 14:00, выезд до 12:00. Ранний заезд (с 7:00 до 14:00) — 50% от стоимости суток. Поздний выезд — по запросу, напишите нам заранее.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q2">Входит ли завтрак в стоимость?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a2">Да, завтрак включён в стоимость проживания.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q3">Нужна ли предоплата?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a3">Нет. Оплата производится при заезде. Кредитная карта не требуется.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q4">Каковы условия отмены?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a4">Отмена бронирования обходится в 50% от стоимости проживания.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q5">Есть ли парковка?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a5">Да, охраняемая парковка на территории отеля — бесплатно для гостей.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q6">Организуете ли вы трансфер?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a6">Да, организуем трансфер от/до аэропорта и вокзала. Услуга платная — детали уточняются при бронировании.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q7">Можно ли с детьми?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a7">Да, мы семейный отель и рады гостям с детьми.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-key="faq.q8">Как оплатить при прямом бронировании?</span>
+                    <span class="arrow">+</span>
+                </div>
+                <div class="faq-answer" data-key="faq.a8">Напишите нам в WhatsApp или по email — мы согласуем удобный способ оплаты.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location">
+        <h2 data-key="location.title">Наше местоположение</h2>
+        <iframe src="https://www.google.com/maps?q=Самарканд+Отель+Латиф&output=embed" width="100%" height="400" loading="lazy"></iframe>
+    </section>
+
+    <section id="contact">
+        <h2 data-key="contact.title">Контакты</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Instagram:</strong>
+                    <a href="https://www.instagram.com/hotel_latif_samarkand" target="_blank">instagram.com/hotel_latif_samarkand</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:hotel.latif.samarkand@gmail.com">hotel.latif.samarkand@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong data-key="contact.phones">Телефоны:</strong><br />
+                    <a href="tel:+998913131783">+998 91 313 17 83</a><br />
+                    <a href="tel:+998906068902">+998 90 606 89 02</a><br />
+                    <a href="tel:+79014704882">+7 (901) 470-48-82</a>
+                </div>
+            </div>
+            <div class="qr-codes">
+                <h3 style="color: #ffd700; margin-bottom: 20px;">Свяжитесь с нами</h3>
+                <div class="qr-container">
+                    <div class="qr-item">
+                        <img src="./public/image/inst0.jpg" alt="Instagram QR" />
+                        <p>Instagram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gallery-modal" id="galleryModal">
+        <span class="close" id="closeModal">×</span>
+        <img id="modalImage" style="max-width:90%;max-height:85vh;border-radius:15px;" />
     </div>
-  </div>
-</section>
 
-<div class="gallery-modal" id="galleryModal">
-  <span class="close" id="closeModal">×</span>
-  <img id="modalImage" style="max-width:90%;max-height:85vh;border-radius:15px;">
-</div>
+    <script>
+        const PHOTOS = [
+            './image/1 (70).jpg',
+            './image/1 (76).jpg',
+            './image/1 (82).jpg',
+            './image/1 (95).jpg',
+            './image/1 (89).jpg',
+            './image/3rooms.jpg',
+            './image/4rooms.jpg',
+            './image/about1.jpg',
+            './image/about2.jpg',
+            './image/about3.jpg',
+            './image/about4.jpg',
+            './image/999.jpg',
+            './image/100.jpg',
+            './image/1 (76).jpg',
+            './image/1 (70).jpg'
+        ];
 
-<script type="module" src="./src/main.js"></script>
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            const allPhotos = [...PHOTOS, ...PHOTOS];
+            allPhotos.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Gallery photo';
+                img.loading = 'lazy';
+                track.appendChild(img);
+            });
+        }
 
-</body> 
+        const langToggle = document.getElementById('langToggle');
+        const sliderImages = document.querySelectorAll('.slider img');
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModalBtn = document.getElementById('closeModal');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        const burger = document.getElementById('burger');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        const translations = {
+            ru: {
+                'nav.home': 'Главная',
+                'nav.rooms': 'Номера',
+                'nav.gallery': 'Галерея',
+                'nav.reviews': 'Отзывы',
+                'nav.faq': 'FAQ',
+                'nav.location': 'Локация',
+                'nav.contact': 'Контакты',
+                'header.title': 'Hotel Latif Samarkand — история, комфорт и забота в сердце Самарканда.',
+                'rooms.title': 'Номера',
+                'rooms.details': 'Подробнее',
+                'gallery.title': 'Галерея',
+                'reviews.title': 'Отзывы гостей',
+                'review1.text': '"Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место."',
+                'review1.author': 'Шелихова. KZ — Оценка: 10',
+                'review2.text': '"Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый. На все мои просьбы сразу отвечали. Очень красивый дворик и бассейн."',
+                'review2.author': 'Елена. BY — Оценка: 9.6',
+                'review3.text': '"Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома"',
+                'review3.author': 'Alex. USA — Оценка: 9.8',
+                'review4.text': '"Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные, разнообразные! Очень рекомендую!"',
+                'review4.author': 'Алиса и группа друзей — Оценка: 9.8',
+                'review5.text': '"Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома"',
+                'review5.author': 'Игорь. FIN — Оценка: 9.6',
+                'review6.text': '"Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Отель расположен в иранском квартале, рядом с центром плова, в шаговой доступности до Регистана (30 мин ходьбы). Скромная обстановка напоминает домашнюю. Тихое, чисто и уютное местечко"',
+                'review6.author': 'Элина. USA — Оценка: 10',
+                'faq.title': 'Часто задаваемые вопросы',
+                'faq.q1': 'Во сколько заезд и выезд?',
+                'faq.a1': 'Заезд с 14:00, выезд до 12:00. Ранний заезд (с 7:00 до 14:00) — 50% от стоимости суток. Поздний выезд — по запросу, напишите нам заранее.',
+                'faq.q2': 'Входит ли завтрак в стоимость?',
+                'faq.a2': 'Да, завтрак включён в стоимость проживания.',
+                'faq.q3': 'Нужна ли предоплата?',
+                'faq.a3': 'Нет. Оплата производится при заезде. Кредитная карта не требуется.',
+                'faq.q4': 'Каковы условия отмены?',
+                'faq.a4': 'Отмена бронирования обходится в 50% от стоимости проживания.',
+                'faq.q5': 'Есть ли парковка?',
+                'faq.a5': 'Да, охраняемая парковка на территории отеля — бесплатно для гостей.',
+                'faq.q6': 'Организуете ли вы трансфер?',
+                'faq.a6': 'Да, организуем трансфер от/до аэропорта и вокзала. Услуга платная — детали уточняются при бронировании.',
+                'faq.q7': 'Можно ли с детьми?',
+                'faq.a7': 'Да, мы семейный отель и рады гостям с детьми.',
+                'faq.q8': 'Как оплатить при прямом бронировании?',
+                'faq.a8': 'Напишите нам в WhatsApp или по email — мы согласуем удобный способ оплаты.',
+                'location.title': 'Наше местоположение',
+                'contact.title': 'Контакты',
+                'contact.phones': 'Телефоны:',
+                'about.title': 'О нас',
+                'about.text1': 'Hotel Latif Samarkand — семейный отель, где за каждым гостем стоит живой человек, а не стойка ресепшн. Мы здесь с 2010 года, и за эти годы выработали одно простое правило: гость должен чувствовать себя желанным. 18 уютных номеров, тенистый сад, бассейн — настоящее спасение от знойного самаркандского лета, — и домашние завтраки, от которых не хочется уходить. А за воротами — рестораны с лучшим пловом в городе, живые улицы старого Самарканда и всё, ради чего сюда едут со всего мира.',
+                'about.text2': 'Все наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн. Кондиционер и отопление · ТВ с кабельными каналами · фен и бесплатные туалетные принадлежности · электрочайник · шкаф/гардеробная · рабочий стол · утюг с гладильной доской · собственная ванная с душем · бесплатный Wi-Fi',
+                'about.text3': '18 номеров · 7 категорий\nВсе наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн.',
+                'about.feature1': 'Бесплатный Wi-Fi на всей территории отеля',
+                'about.feature2': 'Круглосуточная стойка регистрации',
+                'about.feature3': 'Охраняемая парковка на территории',
+                'about.feature4': 'Трансфер из/в аэропорт по запросу',
+                'about.feature5': 'Tee Point на каждом этаже — чай, кофе и питьевая вода в любое время',
+                'about.feature6': 'Завтрак включён в стоимость проживания',
+                'about.feature7': 'Общая кухня и холодильник для гостей'
+            },
+            en: {
+                'nav.home': 'Home',
+                'nav.rooms': 'Rooms',
+                'nav.gallery': 'Gallery',
+                'nav.reviews': 'Reviews',
+                'nav.faq': 'FAQ',
+                'nav.location': 'Location',
+                'nav.contact': 'Contact',
+                'header.title': 'Hotel Latif Samarkand — history, comfort and care in the heart of Samarkand.',
+                'rooms.title': 'Rooms',
+                'rooms.details': 'Details',
+                'gallery.title': 'Gallery',
+                'reviews.title': 'Guest Reviews',
+                'review1.text': '"Very hospitable host, well-kept, blooming territory. You feel like you are at your own dacha. Everything is clean, a pleasant place."',
+                'review1.author': 'Shelikhova. KZ — Rating: 10',
+                'review2.text': '"I really liked the hotel. A house in an old national style. The hotel is without frills, small and clean. Delicious breakfast. The staff is attentive and polite. They responded to all my requests immediately. A very beautiful courtyard and pool."',
+                'review2.author': 'Elena. BY — Rating: 9.6',
+                'review3.text': '"Very beautiful garden and very nice family staff, felt like at home"',
+                'review3.author': 'Alex. USA — Rating: 9.8',
+                'review4.text': '"Wonderful house, excellent host, help with any issues, clean, cozy, atmospheric! The breakfasts are simply magnificent, varied! I highly recommend it!"',
+                'review4.author': 'Alisa and group of friends — Rating: 9.8',
+                'review5.text': '"Excellent hotel, wonderful friendly staff. The feeling that you are vacationing at home"',
+                'review5.author': 'Igor. FIN — Rating: 9.6',
+                'review6.text': '"A wonderful, very attentive and responsive host. They welcome you like old friends. The hotel is located in the Iranian quarter, next to the pilaf center, within walking distance of Registan (30 min walk). The modest atmosphere reminds of home. A quiet, clean and cozy place."',
+                'review6.author': 'Elina. USA — Rating: 10',
+                'faq.title': 'Frequently Asked Questions',
+                'faq.q1': 'What are check-in and check-out times?',
+                'faq.a1': 'Check-in from 14:00, check-out until 12:00. Early check-in (from 7:00 to 14:00) — 50% of the daily rate. Late check-out — upon request, please let us know in advance.',
+                'faq.q2': 'Is breakfast included?',
+                'faq.a2': 'Yes, breakfast is included in the room rate.',
+                'faq.q3': 'Is prepayment required?',
+                'faq.a3': 'No. Payment is made upon check-in. Credit card is not required.',
+                'faq.q4': 'What are the cancellation conditions?',
+                'faq.a4': 'Cancellation of a booking costs 50% of the accommodation cost.',
+                'faq.q5': 'Is there parking?',
+                'faq.a5': 'Yes, guarded parking on the premises — free for guests.',
+                'faq.q6': 'Do you organize transfers?',
+                'faq.a6': 'Yes, we organize transfers from/to the airport and railway station. The service is paid — details are discussed upon booking.',
+                'faq.q7': 'Are children allowed?',
+                'faq.a7': 'Yes, we are a family hotel and welcome guests with children.',
+                'faq.q8': 'How to pay when booking directly?',
+                'faq.a8': 'Write to us on WhatsApp or by email — we will agree on a convenient payment method.',
+                'location.title': 'Our Location',
+                'contact.title': 'Contact',
+                'contact.phones': 'Phones:',
+                'about.title': 'About Us',
+                'about.text1': "Hotel Latif Samarkand is a place where the ancient beauty of Samarkand welcomes you together with the warmth of a family home. Our family hotel opened its doors in July 2010. Since then, it has become a home away from home for hundreds of travelers from around the world who were looking not just for accommodation, but for comfort, care, and sincere hospitality. We believe that a hotel should be more than a place to sleep. It should be a place where guests feel relaxed, welcomed, and supported during their journey.",
+                'about.text2': 'Hotel Latif Samarkand offers 18 bright and comfortable rooms equipped with everything you need for a pleasant and relaxing stay. Our team does everything possible to ensure that each guest enjoys a peaceful atmosphere and authentic Samarkand hospitality. Whether you are visiting Samarkand for the first time or returning again, we are happy to welcome you as our guest.',
+                'about.text3': '18 rooms · 7 categories\nAll our rooms are bright, quiet and spacious, with high ceilings. Each room has everything for a comfortable stay. Rooms on the third floor have a balcony overlooking the garden and pool.',
+                'about.feature1': 'Free Wi‑Fi throughout the property',
+                'about.feature2': 'Free parking',
+                'about.feature3': '24‑hour front desk',
+                'about.feature4': 'Airport shuttle upon request',
+                'about.feature5': 'Tea, coffee and water available anytime',
+                'about.feature6': 'Breakfast included',
+                'about.feature7': 'Shared kitchen and refrigerator'
+            }
+        };
+
+        let currentLang = 'ru';
+        let currentSlideIndex = 0;
+        let slideInterval;
+
+        function startSlider() {
+            if (!sliderImages.length) return;
+            sliderImages[currentSlideIndex].classList.add('active');
+            slideInterval = setInterval(() => {
+                sliderImages[currentSlideIndex].classList.remove('active');
+                currentSlideIndex = (currentSlideIndex + 1) % sliderImages.length;
+                sliderImages[currentSlideIndex].classList.add('active');
+            }, 5000);
+        }
+
+        function updateLanguage(lang) {
+            langToggle.textContent = lang === 'ru' ? 'En' : 'Ru';
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.dataset.key;
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            currentLang = lang;
+        }
+
+        function checkVisibility() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        function updateActiveNav() {
+            let currentId = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 150;
+                if (window.scrollY >= top) {
+                    currentId = section.id;
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function smoothScroll(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                if (navLinksContainer.classList.contains('show')) {
+                    navLinksContainer.classList.remove('show');
+                    burger.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function createScrollTopButton() {
+            const btn = document.createElement('button');
+            btn.innerText = "↑";
+            btn.style.position = "fixed";
+            btn.style.bottom = "30px";
+            btn.style.right = "30px";
+            btn.style.padding = "12px 16px";
+            btn.style.borderRadius = "50%";
+            btn.style.border = "none";
+            btn.style.background = "#ffd700";
+            btn.style.cursor = "pointer";
+            btn.style.display = "none";
+            btn.style.fontSize = "18px";
+            btn.style.zIndex = "1000";
+            document.body.appendChild(btn);
+
+            window.addEventListener('scroll', () => {
+                btn.style.display = window.scrollY > 400 ? "block" : "none";
+            });
+
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        function setupGallery() {
+            const galleryImages = document.querySelectorAll('#gallery .carousel-track img');
+            galleryImages.forEach((img, idx) => {
+                img.addEventListener('click', () => {
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                });
+            });
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function toggleMobileMenu() {
+            burger.classList.toggle('active');
+            navLinksContainer.classList.toggle('show');
+            document.body.style.overflow = navLinksContainer.classList.contains('show') ? 'hidden' : '';
+        }
+
+        function closeMenuOnClickOutside(event) {
+            if (!burger.contains(event.target) && !navLinksContainer.contains(event.target)) {
+                if (navLinksContainer.classList.contains('show')) {
+                    burger.classList.remove('active');
+                    navLinksContainer.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        // FAQ Accordion
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        (function init() {
+            initCarousel();
+            startSlider();
+            updateLanguage('ru');
+            initFAQ();
+
+            langToggle.addEventListener('click', () => {
+                updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex' && e.key === 'Escape') closeModal();
+            });
+
+            window.addEventListener('scroll', updateActiveNav);
+            navLinks.forEach(link => link.addEventListener('click', smoothScroll));
+
+            createScrollTopButton();
+
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('load', () => {
+                checkVisibility();
+                setupGallery();
+            });
+
+            if (burger) {
+                burger.addEventListener('click', toggleMobileMenu);
+            }
+
+            document.addEventListener('click', closeMenuOnClickOutside);
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    if (navLinksContainer.classList.contains('show')) {
+                        navLinksContainer.classList.remove('show');
+                        burger.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        })();
+    </script>
+
+</body>
 </html>
+```

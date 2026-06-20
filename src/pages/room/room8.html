@@ -18,8 +18,6 @@
     </div>
 
     <h1 id="roomTitle">Номер «Стандартный двухместный»</h1>
-    <h2 id="roomTitle1" style=" padding: 20px; ">6 номеров · до 2 гостей · 1 двуспальная ĸровать · от $50 Одноместное размещение:
-        от $40</h2>
 
     <div class="main-layout">
         <div class="slider-wrapper">
@@ -37,8 +35,7 @@
 
         <div class="description-block">
             <div class="description-text" id="descriptionText"></div>
-            <div class="description-text" id="descriptionText1"></div>
-           
+         
             <a href="#" id="whatsappBookLink" class="book-link" target="_blank" rel="noopener noreferrer">Забронировать</a>
         </div>
     </div>
@@ -54,21 +51,40 @@
 
 const TRANSLATIONS = {
     ru: {
-        roomTitle1: "6 номеров · до 2 гостей · 1 двуспальная ĸровать · от $50 Одноместное размещение: от $40",
-        roomTitle: "Номер «Стандартный двухместный номер с двуспальной ĸроватью»",
+        roomTitle: "Номер «Улучшенный двухместный номер с балконом»",
         badge: "⭐️ Рекомендуемый номер",
-        description: `Светлый и тихий номер для пары с большой двуспальной ĸроватью. Вид на сад,
-        уютный двориĸ или городсĸие ĸрыши — и высоĸие потолĸи, ĸоторые дают ощущение
-        пространства. Всё необходимое для споĸойного отдыха после дня среди медресе и
-        базаров Самарĸанда. Удобства: ĸондиционер, отопление, ТВ с ĸабельными ĸаналами, фен, туалетные принадлежности, элеĸтрочайниĸ, шĸаф, рабочий стол, утюг с гладильной досĸой, собственная ванная с душем, бесплатный Wi-Fi. Общая ĸухня и холодильниĸ — в холле.` ,
+        description:`Светлый и стильный номер повышенной комфортности с собственным балконом и красивым видом из окна. Идеальный выбор для пар, которые хотят сделать своё путешествие в Самарканд особенно приятным.<br>
+Удобства номера:  <br>
+•	Просторная двуспальная кровать<br>
+•	Балкон с красивым видом<br>
+•	Собственная ванная комната<br>
+•	Кондиционер<br>
+•	Телевизор с плоским экраном<br>
+•	Бесплатный Wi Fi<br>
+•	Шкаф для одежды<br>
+•	Рабочий стол<br>
+•	Полотенца и туалетные принадлежности<br>
+Номер создан для тех, кто ценит уют, пространство и возможность наслаждаться видом на город. <br>
+`,
         bookButton: "Забронировать",
         whatsappMessage: "Здравствуйте! Хочу забронировать номер «Стандартный двухместный»."
     },
     en: {
-        roomTitle: "Room «Standard Double»",
+        roomTitle: "Room «Superior Double Room with Balcony»",
         badge: "⭐️ Recommended Room",
-        description: `Comfortable and bright room designed for couples or solo travelers who appreciate simplicity and comfort.<br> 
-              Room features: - Comfortable double bed - Private bathroom with shower - Air conditioning - Flat‑screen TV - Free Wi‑Fi - Wardrobe - Clean towels and toiletries`,
+        description: `A bright and stylish superior room with a private balcony and a beautiful view. An excellent choice for couples who want to make their trip to Samarkand especially memorable.  <br>
+Room features: <br>
+•	Spacious double bed<br>
+•	Balcony with a beautiful view<br>
+•	Private bathroom<br>
+•	Air conditioning<br>
+•	Flat screen TV<br>
+•	Free Wi Fi<br>
+•	Wardrobe<br>
+•	Work desk<br>
+•	Towels and toiletries<br>
+Designed for guests who value comfort, space, and the opportunity to enjoy the view of the city. <br>
+`,
         bookButton: "Book now",
         whatsappMessage: "Hello! I would like to book the “Standard Double Room”."
     }
@@ -85,7 +101,6 @@ const elements = {
     roomTitle: document.getElementById('roomTitle'),
     badge: document.getElementById('badgeElement'),
     description: document.getElementById('descriptionText'),
-    description1: document.getElementById('descriptionText1'),
     bookLink: document.getElementById('whatsappBookLink'),
     slidesContainer: document.getElementById('slides'),
     dotsContainer: document.getElementById('sliderDots'),
@@ -106,13 +121,13 @@ function switchLanguage(lang) {
 
     state.currentLang = lang;
 
-    
+
     if (elements.roomTitle) elements.roomTitle.textContent = t.roomTitle;
     if (elements.badge) elements.badge.textContent = t.badge;
     if (elements.description) elements.description.innerHTML = t.description;
     if (elements.bookLink) elements.bookLink.textContent = t.bookButton;
 
-   
+ 
     elements.langButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
     });
@@ -135,7 +150,7 @@ function initSlider() {
     state.totalSlides = slides.length;
     if (state.totalSlides === 0) return;
 
-   
+ 
     if (elements.dotsContainer) {
         elements.dotsContainer.innerHTML = '';
         for (let i = 0; i < state.totalSlides; i++) {
@@ -146,11 +161,11 @@ function initSlider() {
         }
     }
 
-    
+
     document.querySelector('.prev-slide')?.addEventListener('click', () => goToSlide(state.currentSlide - 1));
     document.querySelector('.next-slide')?.addEventListener('click', () => goToSlide(state.currentSlide + 1));
 
-    
+  
     let startX = 0;
     elements.slidesContainer.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
     elements.slidesContainer.addEventListener('touchend', e => {
@@ -167,6 +182,7 @@ function init() {
     });
     switchLanguage(CONFIG.DEFAULT_LANG);
 }
+
 
 document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 
