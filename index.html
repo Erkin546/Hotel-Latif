@@ -407,6 +407,375 @@
         <img id="modalImage" style="max-width:90%;max-height:85vh;border-radius:15px;" />
     </div>
 
-    <script src=".src/main.js"></script>
+    <script>
+      const PHOTOS = [
+  './image/1 (70).jpg',
+  './image/1 (76).jpg',
+  './image/1 (82).jpg',
+  './image/1 (95).jpg',
+  './image/1 (89).jpg',
+  './image/3rooms.jpg',
+  './image/4rooms.jpg',
+  './image/about1.jpg',
+  './image/about2.jpg',
+  './image/about3.jpg',
+  './image/about4.jpg',
+  './image/999.jpg',
+  './image/100.jpg',
+  './image/1 (76).jpg',
+  './image/1 (70).jpg'
+];
+
+function initCarousel() {
+  const track = document.getElementById('carouselTrack');
+  if (!track) return;
+  const allPhotos = [...PHOTOS, ...PHOTOS];
+  allPhotos.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Gallery photo';
+      img.loading = 'lazy';
+      track.appendChild(img);
+  });
+}
+
+const langToggle = document.getElementById('langToggle');
+const sliderImages = document.querySelectorAll('.slider img');
+const modal = document.getElementById('galleryModal');
+const modalImg = document.getElementById('modalImage');
+const closeModalBtn = document.getElementById('closeModal');
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const burger = document.getElementById('burger');
+const navLinksContainer = document.getElementById('navLinks');
+
+const translations = {
+  ru: {
+      'nav.home': 'Главная',
+      'nav.about': 'О нас',
+      'nav.around': 'Вокруг отеля',
+      'nav.rooms': 'Номера',
+      'nav.gallery': 'Галерея',
+      'nav.reviews': 'Отзывы',
+      'nav.faq': 'FAQ',
+      'nav.location': 'Локация',
+      'nav.contact': 'Контакты',
+      'header.title': 'Hotel Latif Samarkand — история, комфорт и забота в сердце Самарканда.',
+      'around.title': 'Самарканд вокруг отеля',
+      'around.subtitle': 'Древний город — в нескольких шагах\nHotel Latif расположен в тихом жилом районе Самарканда — в стороне от туристического шума, но в нескольких минутах от всего, ради чего сюда едут.',
+      'around.nearby': 'Что рядом:',
+      'around.howtoget': 'Как добраться:',
+      'rooms.title': 'Номера',
+      'rooms.details': 'Подробнее',
+      'gallery.title': 'Галерея',
+      'reviews.title': 'Отзывы гостей',
+      'review1.text': '"Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место."',
+      'review1.author': 'Шелихова. KZ — Оценка: 10',
+      'review2.text': '"Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый. На все мои просьбы сразу отвечали. Очень красивый дворик и бассейн."',
+      'review2.author': 'Елена. BY — Оценка: 9.6',
+      'review3.text': '"Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома"',
+      'review3.author': 'Alex. USA — Оценка: 9.8',
+      'review4.text': '"Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные, разнообразные! Очень рекомендую!"',
+      'review4.author': 'Алиса и группа друзей — Оценка: 9.8',
+      'review5.text': '"Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома"',
+      'review5.author': 'Игорь. FIN — Оценка: 9.6',
+      'review6.text': '"Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Отель расположен в иранском квартале, рядом с центром плова, в шаговой доступности до Регистана (30 мин ходьбы). Скромная обстановка напоминает домашнюю. Тихое, чисто и уютное местечко"',
+      'review6.author': 'Элина. USA — Оценка: 10',
+      'faq.title': 'Часто задаваемые вопросы',
+      'faq.q1': 'Во сколько заезд и выезд?',
+      'faq.a1': 'Заезд с 14:00, выезд до 12:00. Ранний заезд (с 7:00 до 14:00) — 50% от стоимости суток. Поздний выезд — по запросу, напишите нам заранее.',
+      'faq.q2': 'Входит ли завтрак в стоимость?',
+      'faq.a2': 'Да, завтрак включён в стоимость проживания.',
+      'faq.q3': 'Нужна ли предоплата?',
+      'faq.a3': 'Нет. Оплата производится при заезде. Кредитная карта не требуется.',
+      'faq.q4': 'Каковы условия отмены?',
+      'faq.a4': 'Отмена бронирования обходится в 50% от стоимости проживания.',
+      'faq.q5': 'Есть ли парковка?',
+      'faq.a5': 'Да, охраняемая парковка на территории отеля — бесплатно для гостей.',
+      'faq.q6': 'Организуете ли вы трансфер?',
+      'faq.a6': 'Да, организуем трансфер от/до аэропорта и вокзала. Услуга платная — детали уточняются при бронировании.',
+      'faq.q7': 'Можно ли с детьми?',
+      'faq.a7': 'Да, мы семейный отель и рады гостям с детьми.',
+      'faq.q8': 'Как оплатить при прямом бронировании?',
+      'faq.a8': 'Напишите нам в WhatsApp или по email — мы согласуем удобный способ оплаты.',
+      'location.title': 'Наше местоположение',
+      'contact.title': 'Контакты',
+      'contact.phones': 'Телефоны:',
+      'about.title': 'О нас',
+      'about.text1': 'Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях. Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.',
+      'about.text2': 'Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием. Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха.',
+      'about.text3': '18 номеров · 7 категорий\nВсе наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн.',
+      'about.services': 'Удобства:',
+      'about.extra': 'Дополнительно (платно):',
+      'about.feature1': 'Бесплатный Wi-Fi на всей территории отеля',
+      'about.feature2': 'Круглосуточная стойка регистрации',
+      'about.feature3': 'Охраняемая парковка на территории',
+      'about.feature4': 'Трансфер из/в аэропорт по запросу',
+      'about.feature5': 'Чай, кофе и вода в любое время',
+      'about.feature6': 'Завтрак включён в стоимость проживания',
+      'about.feature7': 'Общая кухня и холодильник для гостей',
+      'about.extra1': 'Трансфер от/до аэропорта и вокзала — детали уточняются при бронировании',
+      'about.extra2': 'Сезонный открытый бассейн',
+      'about.extra3': 'Сад с виноградником и розарием, тенистая терраса, общий лаундж',
+      'about.extra4': 'Прачечная и химчистка',
+      'about.extra5': 'Помощь в организации экскурсий, гида и транспорта по городу',
+      'about.extra6': 'Хранение багажа'
+  },
+  en: {
+      'nav.home': 'Home',
+      'nav.about': 'About',
+      'nav.around': 'Around Hotel',
+      'nav.rooms': 'Rooms',
+      'nav.gallery': 'Gallery',
+      'nav.reviews': 'Reviews',
+      'nav.faq': 'FAQ',
+      'nav.location': 'Location',
+      'nav.contact': 'Contact',
+      'header.title': 'Hotel Latif Samarkand — history, comfort and care in the heart of Samarkand.',
+      'around.title': 'Samarkand around the hotel',
+      'around.subtitle': 'Ancient city — just steps away\nHotel Latif is located in a quiet residential area of Samarkand — away from tourist noise, but minutes away from everything people come here for.',
+      'around.nearby': 'Nearby:',
+      'around.howtoget': 'How to get:',
+      'rooms.title': 'Rooms',
+      'rooms.details': 'Details',
+      'gallery.title': 'Gallery',
+      'reviews.title': 'Guest Reviews',
+      'review1.text': '"Very hospitable host, well-kept, blooming territory. You feel like you are at your own dacha. Everything is clean, a pleasant place."',
+      'review1.author': 'Shelikhova. KZ — Rating: 10',
+      'review2.text': '"I really liked the hotel. A house in an old national style. The hotel is without frills, small and clean. Delicious breakfast. The staff is attentive and polite. They responded to all my requests immediately. A very beautiful courtyard and pool."',
+      'review2.author': 'Elena. BY — Rating: 9.6',
+      'review3.text': '"Very beautiful garden and very nice family staff, felt like at home"',
+      'review3.author': 'Alex. USA — Rating: 9.8',
+      'review4.text': '"Wonderful house, excellent host, help with any issues, clean, cozy, atmospheric! The breakfasts are simply magnificent, varied! I highly recommend it!"',
+      'review4.author': 'Alisa and group of friends — Rating: 9.8',
+      'review5.text': '"Excellent hotel, wonderful friendly staff. The feeling that you are vacationing at home"',
+      'review5.author': 'Igor. FIN — Rating: 9.6',
+      'review6.text': '"A wonderful, very attentive and responsive host. They welcome you like old friends. The hotel is located in the Iranian quarter, next to the pilaf center, within walking distance of Registan (30 min walk). The modest atmosphere reminds of home. A quiet, clean and cozy place."',
+      'review6.author': 'Elina. USA — Rating: 10',
+      'faq.title': 'Frequently Asked Questions',
+      'faq.q1': 'What are check-in and check-out times?',
+      'faq.a1': 'Check-in from 14:00, check-out until 12:00. Early check-in (from 7:00 to 14:00) — 50% of the daily rate. Late check-out — upon request, please let us know in advance.',
+      'faq.q2': 'Is breakfast included?',
+      'faq.a2': 'Yes, breakfast is included in the room rate.',
+      'faq.q3': 'Is prepayment required?',
+      'faq.a3': 'No. Payment is made upon check-in. Credit card is not required.',
+      'faq.q4': 'What are the cancellation conditions?',
+      'faq.a4': 'Cancellation of a booking costs 50% of the accommodation cost.',
+      'faq.q5': 'Is there parking?',
+      'faq.a5': 'Yes, guarded parking on the premises — free for guests.',
+      'faq.q6': 'Do you organize transfers?',
+      'faq.a6': 'Yes, we organize transfers from/to the airport and railway station. The service is paid — details are discussed upon booking.',
+      'faq.q7': 'Are children allowed?',
+      'faq.a7': 'Yes, we are a family hotel and welcome guests with children.',
+      'faq.q8': 'How to pay when booking directly?',
+      'faq.a8': 'Write to us on WhatsApp or by email — we will agree on a convenient payment method.',
+      'location.title': 'Our Location',
+      'contact.title': 'Contact',
+      'contact.phones': 'Phones:',
+      'about.title': 'About Us',
+      'about.text1': "Hotel Latif Samarkand is a place where the ancient beauty of Samarkand welcomes you together with the warmth of a family home. Our family hotel opened its doors in July 2010. Since then, it has become a home away from home for hundreds of travelers from around the world who were looking not just for accommodation, but for comfort, care, and sincere hospitality.",
+      'about.text2': 'We believe that a hotel should be more than a place to sleep. It should be a place where guests feel relaxed, welcomed, and supported during their journey. Hotel Latif Samarkand offers 18 bright and comfortable rooms equipped with everything you need for a pleasant and relaxing stay.',
+      'about.text3': '18 rooms · 7 categories\nAll our rooms are bright, quiet and spacious, with high ceilings. Each room has everything for a comfortable stay. Rooms on the third floor have a balcony overlooking the garden and pool.',
+      'about.services': 'Amenities:',
+      'about.extra': 'Additional (paid):',
+      'about.feature1': 'Free Wi‑Fi throughout the property',
+      'about.feature2': '24-hour front desk',
+      'about.feature3': 'Free parking on site',
+      'about.feature4': 'Airport shuttle upon request',
+      'about.feature5': 'Tea, coffee and water available anytime',
+      'about.feature6': 'Breakfast included',
+      'about.feature7': 'Shared kitchen and refrigerator',
+      'about.extra1': 'Airport and railway station transfer — details upon booking',
+      'about.extra2': 'Seasonal outdoor pool',
+      'about.extra3': 'Garden with vineyard and rose garden, shaded terrace, shared lounge',
+      'about.extra4': 'Laundry and dry cleaning',
+      'about.extra5': 'Excursion, guide and transport organization assistance',
+      'about.extra6': 'Luggage storage'
+  }
+};
+
+let currentLang = 'ru';
+let currentSlideIndex = 0;
+let slideInterval;
+
+function startSlider() {
+  if (!sliderImages.length) return;
+  sliderImages[currentSlideIndex].classList.add('active');
+  slideInterval = setInterval(() => {
+      sliderImages[currentSlideIndex].classList.remove('active');
+      currentSlideIndex = (currentSlideIndex + 1) % sliderImages.length;
+      sliderImages[currentSlideIndex].classList.add('active');
+  }, 5000);
+}
+
+function updateLanguage(lang) {
+  langToggle.textContent = lang === 'ru' ? 'En' : 'Ru';
+  document.querySelectorAll('[data-key]').forEach(element => {
+      const key = element.dataset.key;
+      if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+      }
+  });
+  currentLang = lang;
+}
+
+function checkVisibility() {
+  sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if (sectionTop < windowHeight * 0.85) {
+          section.classList.add('visible');
+      }
+  });
+}
+
+function updateActiveNav() {
+  let currentId = '';
+  sections.forEach(section => {
+      const top = section.offsetTop - 150;
+      if (window.scrollY >= top) {
+          currentId = section.id;
+      }
+  });
+  navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('active');
+      }
+  });
+}
+
+function smoothScroll(event) {
+  event.preventDefault();
+  const targetId = this.getAttribute('href');
+  const targetElement = document.querySelector(targetId);
+  if (targetElement) {
+      if (navLinksContainer.classList.contains('show')) {
+          navLinksContainer.classList.remove('show');
+          burger.classList.remove('active');
+          document.body.style.overflow = '';
+      }
+      window.scrollTo({
+          top: targetElement.offsetTop - 50,
+          behavior: 'smooth'
+      });
+  }
+}
+
+function createScrollTopButton() {
+  const btn = document.createElement('button');
+  btn.innerText = "↑";
+  btn.style.position = "fixed";
+  btn.style.bottom = "30px";
+  btn.style.right = "30px";
+  btn.style.padding = "12px 16px";
+  btn.style.borderRadius = "50%";
+  btn.style.border = "none";
+  btn.style.background = "#ffd700";
+  btn.style.cursor = "pointer";
+  btn.style.display = "none";
+  btn.style.fontSize = "18px";
+  btn.style.zIndex = "1000";
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+      btn.style.display = window.scrollY > 400 ? "block" : "none";
+  });
+
+  btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+function setupGallery() {
+  const galleryImages = document.querySelectorAll('#gallery .carousel-track img');
+  galleryImages.forEach((img, idx) => {
+      img.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalImg.src = img.src;
+      });
+  });
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+
+function toggleMobileMenu() {
+  burger.classList.toggle('active');
+  navLinksContainer.classList.toggle('show');
+  document.body.style.overflow = navLinksContainer.classList.contains('show') ? 'hidden' : '';
+}
+
+function closeMenuOnClickOutside(event) {
+  if (!burger.contains(event.target) && !navLinksContainer.contains(event.target)) {
+      if (navLinksContainer.classList.contains('show')) {
+          burger.classList.remove('active');
+          navLinksContainer.classList.remove('show');
+          document.body.style.overflow = '';
+      }
+  }
+}
+
+function initFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) {
+              item.classList.add('active');
+          }
+      });
+  });
+}
+
+(function init() {
+  initCarousel();
+  startSlider();
+  updateLanguage('ru');
+  initFAQ();
+
+  langToggle.addEventListener('click', () => {
+      updateLanguage(currentLang === 'ru' ? 'en' : 'ru');
+  });
+
+  closeModalBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+      if (modal.style.display === 'flex' && e.key === 'Escape') closeModal();
+  });
+
+  window.addEventListener('scroll', updateActiveNav);
+  navLinks.forEach(link => link.addEventListener('click', smoothScroll));
+
+  createScrollTopButton();
+
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('load', () => {
+      checkVisibility();
+      setupGallery();
+  });
+
+  if (burger) {
+      burger.addEventListener('click', toggleMobileMenu);
+  }
+
+  document.addEventListener('click', closeMenuOnClickOutside);
+
+  window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+          if (navLinksContainer.classList.contains('show')) {
+              navLinksContainer.classList.remove('show');
+              burger.classList.remove('active');
+              document.body.style.overflow = '';
+          }
+      }
+  });
+})();
+    </script>
 </body>
 </html>
