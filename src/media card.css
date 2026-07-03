@@ -28,8 +28,12 @@
         text-align: center;
         padding: 10px 12px;
     }
-    h1 {
-        font-size: 24px;
+    .room-title-main {
+        font-size: 22px;
+        padding-left: 18px;
+    }
+    .room-subtitle {
+        font-size: 14px;
         padding-left: 18px;
         margin-bottom: 20px;
     }
@@ -40,15 +44,16 @@
     }
     .description-text {
         font-size: 0.95rem;
-        line-height: 1.55;
+        line-height: 1.6;
     }
     .book-link {
-        padding: 12px 20px;
+        padding: 14px 20px;
         font-size: 1rem;
     }
     .badge {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         text-align: center;
+        padding: 6px 16px;
     }
 }
 
@@ -66,9 +71,10 @@
         width: 20px;
     }
     .description-block {
-        padding: 18px;
+        padding: 20px;
     }
     .book-link {
-        padding: 11px 16px;
+        padding: 12px 16px;
+        font-size: 0.95rem;
     }
 }
