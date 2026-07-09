@@ -4,56 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Latif Samarkand</title>
-    <link rel="stylesheet" href="/src/style.css">
-    <link rel="stylesheet" href="/src/media.css">
+   <link rel="stylesheet" href="/src/style.css">
+   <link rel="stylesheet" href="/src/media.css">
 </head>
 <body>
 
+    <!-- ===== HEADER ===== -->
     <header>
+        <div class="nav-logo">LATIF<span>HOTEL</span></div>
+
+        <div class="burger" id="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home" data-key="nav.home">Главная</a>
+            <a href="#about" data-key="nav.about">О нас</a>
+            <a href="#around" data-key="nav.around">Вокруг отеля</a>
+            <a href="#rooms" data-key="nav.rooms">Номера</a>
+            <a href="#gallery" data-key="nav.gallery">Галерея</a>
+            <a href="#reviews" data-key="nav.reviews">Отзывы</a>
+            <a href="#faq" data-key="nav.faq">FAQ</a>
+            <a href="#location" data-key="nav.location">Локация</a>
+            <a href="#contact" data-key="nav.contact">Контакты</a>
+            <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank" data-key="nav.book">Забронировать</a>
+            <button class="lang-switch" id="langToggle">En</button>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <div class="hero" id="home">
         <div class="slider">
             <img src="./image/1 (76).jpg" class="active" />
             <img src="./image/999.jpg" />
             <img src="./image/100.jpg" />
         </div>
-        <div class="header-overlay"></div>
-        <nav>
-            <div class="nav-logo">Hotel Latif Samarkand</div>
-            <div class="burger" id="burger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="#home" data-key="nav.home">Главная</a>
-                <a href="#about" data-key="nav.about">О нас</a>
-                <a href="#around" data-key="nav.around">Вокруг отеля</a>
-                <a href="#rooms" data-key="nav.rooms">Номера</a>
-                <a href="#gallery" data-key="nav.gallery">Галерея</a>
-                <a href="#reviews" data-key="nav.reviews">Отзывы</a>
-                <a href="#faq" data-key="nav.faq">FAQ</a>
-                <a href="#location" data-key="nav.location">Локация</a>
-                <a href="#contact" data-key="nav.contact">Контакты</a>
-                <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank">Book Now</a>
-                <button class="lang-switch" id="langToggle">En</button>
-            </div>
-        </nav>
-
-        <div class="header-text" data-key="header.title">
-            Hotel Latif Samarkand — история, комфорт и забота в сердце Самарканда.
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <div class="tag" data-key="hero.tag">Samarkand · Since 2010</div>
+            <h1 data-key="hero.title">Hotel Latif Samarkand —<br /><strong>история, комфорт и забота</strong><br />в сердце Самарканда</h1>
+            <p data-key="hero.sub">Семейный отель в тихом районе города</p>
+            <a href="#rooms" class="hero-btn" data-key="hero.btn">Выбрать номер</a>
         </div>
-    </header>
+    </div>
 
+    <!-- ===== ABOUT ===== -->
     <section id="about">
         <div class="about-container">
             <div class="about-left">
-                <h2 data-key="about.title">О нас</h2>
-                <p class="about-description" data-key="about.text1">
+                <h2 data-key="about.title">Об <strong>отеле</strong></h2>
+
+                <p class="about-description" data-key="about.p1">
                     Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях. Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.
                 </p>
-                <p class="about-description" data-key="about.text2">
+
+                <p class="about-description" data-key="about.p2">
                     Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием. Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха.
                 </p>
-                <p class="about-description" data-key="about.text3">
+
+                <p class="about-description" data-key="about.p3">
                     <strong>18 номеров · 7 категорий</strong><br />
                     Все наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн.
                 </p>
@@ -61,45 +72,45 @@
                 <div class="about-services">
                     <div class="services-title" data-key="about.services">Удобства:</div>
                     <div class="services-grid">
-                        <div class="service-item" data-key="about.feature1">Бесплатный Wi‑Fi на всей территории</div>
-                        <div class="service-item" data-key="about.feature2">Круглосуточная стойка регистрации</div>
-                        <div class="service-item" data-key="about.feature3">Охраняемая парковка на территории</div>
-                        <div class="service-item" data-key="about.feature4">Трансфер из/в аэропорт по запросу</div>
-                        <div class="service-item" data-key="about.feature5">Чай, кофе и вода в любое время</div>
-                        <div class="service-item" data-key="about.feature6">Завтрак включён в стоимость</div>
-                        <div class="service-item" data-key="about.feature7">Общая кухня и холодильник для гостей</div>
+                        <div class="service-item" data-key="about.s1">Бесплатный Wi‑Fi на всей территории</div>
+                        <div class="service-item" data-key="about.s2">Круглосуточная стойка регистрации</div>
+                        <div class="service-item" data-key="about.s3">Охраняемая парковка на территории</div>
+                        <div class="service-item" data-key="about.s4">Трансфер из/в аэропорт по запросу</div>
+                        <div class="service-item" data-key="about.s5">Чай, кофе и вода в любое время</div>
+                        <div class="service-item" data-key="about.s6">Завтрак включён в стоимость</div>
+                        <div class="service-item" data-key="about.s7">Общая кухня и холодильник для гостей</div>
                     </div>
                 </div>
             </div>
 
             <div class="about-right">
                 <div class="about-images">
-                    <img src="./image/about1.jpg" alt="Hotel Latif" class="about-img about-img-1" />
-                    <img src="./image/about2.jpg" alt="Hotel Latif" class="about-img about-img-2" />
-                    <img src="./image/about3.jpg" alt="Hotel Latif" class="about-img about-img-3" />
-                    <img src="./image/about4.jpg" alt="Hotel Latif" class="about-img about-img-4" />
+                    <img src="./image/about1.jpg" alt="Hotel" class="about-img about-img-1" />
+                    <img src="./image/about2.jpg" alt="Hotel" class="about-img about-img-2" />
+                    <img src="./image/about3.jpg" alt="Hotel" class="about-img about-img-3" />
                 </div>
 
                 <div class="about-extra-right">
                     <div class="services-title" data-key="about.extra">Дополнительно (платно):</div>
                     <div class="services-grid">
-                        <div class="service-item" data-key="about.extra1">Трансфер от/до аэропорта и вокзала — детали уточняются при бронировании</div>
-                        <div class="service-item" data-key="about.extra2">Сезонный открытый бассейн</div>
-                        <div class="service-item" data-key="about.extra3">Сад с виноградником и розарием, тенистая терраса, общий лаундж</div>
-                        <div class="service-item" data-key="about.extra4">Прачечная и химчистка</div>
-                        <div class="service-item" data-key="about.extra5">Помощь в организации экскурсий, гида и транспорта по городу</div>
-                        <div class="service-item" data-key="about.extra6">Хранение багажа</div>
+                        <div class="service-item" data-key="about.e1">Трансфер от/до аэропорта и вокзала</div>
+                        <div class="service-item" data-key="about.e2">Сезонный открытый бассейн</div>
+                        <div class="service-item" data-key="about.e3">Сад с виноградником и розарием</div>
+                        <div class="service-item" data-key="about.e4">Прачечная и химчистка</div>
+                        <div class="service-item" data-key="about.e5">Помощь в организации экскурсий</div>
+                        <div class="service-item" data-key="about.e6">Хранение багажа</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== РАЗДЕЛ: САМАРКАНД ВОКРУГ ОТЕЛЯ ===== -->
-    <section id="around">
-        <h2 data-key="around.title">Самарканд вокруг отеля</h2>
+    <!-- ===== AROUND ===== -->
+    <section id="around" style="background:#fafafa;">
+        <h2 data-key="around.title">Самарканд <strong>вокруг отеля</strong></h2>
+
         <div class="around-container">
-            <p class="around-subtitle" data-key="around.subtitle">
+            <p class="around-subtitle" data-key="around.sub">
                 <strong>Древний город — в нескольких шагах</strong><br />
                 Hotel Latif расположен в тихом жилом районе Самарканда — в стороне от туристического шума, но в нескольких минутах от всего, ради чего сюда едут.
             </p>
@@ -108,18 +119,22 @@
                 <div class="around-col">
                     <h3 data-key="around.nearby">Что рядом:</h3>
                     <ul>
-                        <li><span class="place" data-key="around.place1">🍛 Ресторан Каримбек (лучший плов в городе)</span> <span class="distance" data-key="around.dist1">~250 м</span></li>
-                        <li><span class="place" data-key="around.place2">🛒 Сиабский базар (специи, сухофрукты, лепёшки)</span> <span class="distance-light" data-key="around.dist2">~1 км</span></li>
-                        <li><span class="place" data-key="around.place3">🕌 Мавзолей Гур-Эмир (усыпальница Амира Тимура)</span> <span class="distance-light" data-key="around.dist3">~2,9 км</span></li>
-                        <li><span class="place" data-key="around.place4">🏛️ Государственный музей истории культуры Узбекистана</span> <span class="distance-light" data-key="around.dist4">~1,7 км</span></li>
+                        <li><span data-key="around.n1">Ресторан Каримбек (лучший плов в городе)</span> <span class="distance">~250 м</span></li>
+                        <li><span data-key="around.n2">Сиабский базар (специи, сухофрукты, лепёшки)</span> <span class="distance">~1 км</span></li>
+                        <li><span data-key="around.n3">Мавзолей Гур-Эмир (усыпальница Амира Тимура)</span> <span class="distance">~2,9 км</span></li>
+                        <li><span data-key="around.n4">Государственный музей истории культуры Узбекистана</span> <span class="distance">~1,7 км</span></li>
+                        <li><span data-key="around.n5">Регистан (площадь трёх медресе)</span> <span class="distance">~3,6 км</span></li>
+                        <li><span data-key="around.n6">Мечеть Биби-Ханым</span> <span class="distance">~3 км</span></li>
+                        <li><span data-key="around.n7">Медресе Улугбека</span> <span class="distance">~3,5 км</span></li>
                     </ul>
                 </div>
+
                 <div class="around-col">
-                    <h3 style="visibility:hidden;">.</h3>
+                    <h3 data-key="around.how">Как добраться:</h3>
                     <ul>
-                        <li><span class="place" data-key="around.place5">🏛️ Регистан (площадь трёх медресе)</span> <span class="distance-light" data-key="around.dist5">~3,6 км</span></li>
-                        <li><span class="place" data-key="around.place6">🕌 Мечеть Биби-Ханым</span> <span class="distance-light" data-key="around.dist6">~3 км</span></li>
-                        <li><span class="place" data-key="around.place7">📚 Медресе Улугбека</span> <span class="distance-light" data-key="around.dist7">~3,5 км</span></li>
+                        <li><span data-key="around.h1">Международный аэропорт Самарканда (SKD)</span> <span class="distance">~9 км</span></li>
+                        <li><span data-key="around.h2">Железнодорожный вокзал</span> <span class="distance">~5 км</span></li>
+                        <li><span data-key="around.h3">Трансфер от/до аэропорта и вокзала</span> <span class="distance">платно</span></li>
                     </ul>
                 </div>
             </div>
@@ -128,110 +143,143 @@
 
             <div class="around-bottom">
                 <div class="around-col">
-                    <h3 data-key="around.howtoget">Как добраться:</h3>
+                    <h3 data-key="around.amenities">Удобства на территории:</h3>
                     <ul>
-                        <li><span class="place" data-key="around.transport1">✈️ Международный аэропорт Самарканда (SKD)</span> <span class="distance-light" data-key="around.transport1dist">~9 км (~22 мин на такси)</span></li>
-                        <li><span class="place" data-key="around.transport2">🚂 Железнодорожный вокзал</span> <span class="distance-light" data-key="around.transport2dist">~5 км</span></li>
+                        <li><span data-key="around.a1">Сезонный открытый бассейн</span> <span class="distance">на территории</span></li>
+                        <li><span data-key="around.a2">Сад с виноградником и розарием</span> <span class="distance">вокруг отеля</span></li>
+                        <li><span data-key="around.a3">Тенистая терраса, общий лаундж</span> <span class="distance">для отдыха</span></li>
                     </ul>
                 </div>
+
                 <div class="around-col">
-                    <h3 style="visibility:hidden;">.</h3>
+                    <h3 data-key="around.guests">Для гостей:</h3>
                     <ul>
-                        <li><span class="place" data-key="around.transport3">🚐 Трансфер от/до аэропорта и вокзала</span> <span class="distance" data-key="around.transport3desc">организуем для наших гостей (платно)</span></li>
+                        <li><span data-key="around.g1">Бесплатный Wi‑Fi</span> <span class="distance">по всему отелю</span></li>
+                        <li><span data-key="around.g2">Охраняемая парковка</span> <span class="distance">бесплатно</span></li>
+                        <li><span data-key="around.g3">Круглосуточная стойка</span> <span class="distance">всегда на месте</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== ROOMS ===== -->
     <section id="rooms">
-        <h2 data-key="rooms.title">Номера</h2>
+        <h2 data-key="rooms.title">Номера <strong>и цены</strong></h2>
+
         <div class="room-grid">
             <a href="./src/pages/room/room1.html" class="room-link">
                 <div class="room">
-                 <img src="./public/image/ (89).jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/1 (89).jpg" alt="Standard" />
+                    <p data-key="rooms.r1">Стандарт — от $50</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room2.html" class="room-link">
                 <div class="room">
-                    <img src="./public/image/1 (89).jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/3rooms.jpg" alt="Comfort" />
+                    <p data-key="rooms.r2">Комфорт — от $70</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room3.html" class="room-link">
                 <div class="room">
-                    <img src="./image/1 (89).jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/4rooms.jpg" alt="Family" />
+                    <p data-key="rooms.r3">Семейный — от $90</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room4.html" class="room-link">
                 <div class="room">
-                    <img src="./image/1 (89).jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/11room.jpg" alt="Lux" />
+                    <p data-key="rooms.r4">Люкс с балконом — от $120</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room5.html" class="room-link">
                 <div class="room">
-                    <img src="./image/1 (89).jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/about1.jpg" alt="Deluxe" />
+                    <p data-key="rooms.r5">Делюкс — от $100</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room6.html" class="room-link">
                 <div class="room">
-                    <img src="" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/about2.jpg" alt="Superior" />
+                    <p data-key="rooms.r6">Супериор — от $80</p>
                 </div>
             </a>
+
             <a href="./src/pages/room/room7.html" class="room-link">
                 <div class="room">
-                    <img src="./public/image/11room.jpg" alt="Standard Room" />
-                    <p data-key="rooms.details">Подробнее</p>
+                    <img src="./image/about3.jpg" alt="Premium" />
+                    <p data-key="rooms.r7">Премиум — от $110</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <section id="gallery">
-        <h2 data-key="gallery.title">Галерея</h2>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carouselTrack"></div>
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" style="background:#fafafa;">
+        <h2 data-key="gallery.title">Галерея <strong>отеля</strong></h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <img src="./image/1 (70).jpg" alt="Gallery" />
+            <img src="./image/1 (76).jpg" alt="Gallery" />
+            <img src="./image/1 (82).jpg" alt="Gallery" />
+            <img src="./image/1 (95).jpg" alt="Gallery" />
+            <img src="./image/1 (89).jpg" alt="Gallery" />
+            <img src="./image/3rooms.jpg" alt="Gallery" />
+            <img src="./image/4rooms.jpg" alt="Gallery" />
+            <img src="./image/about1.jpg" alt="Gallery" />
+            <img src="./image/about2.jpg" alt="Gallery" />
+            <img src="./image/about3.jpg" alt="Gallery" />
+            <img src="./image/999.jpg" alt="Gallery" />
+            <img src="./image/100.jpg" alt="Gallery" />
         </div>
     </section>
 
+    <!-- ===== REVIEWS ===== -->
     <section id="reviews">
-        <h2 data-key="reviews.title">Отзывы гостей</h2>
+        <h2 data-key="reviews.title">Отзывы <strong>гостей</strong></h2>
+
         <div class="reviews-container">
             <div class="review">
-                <p data-key="review1.text">«Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место.»</p>
-                <span data-key="review1.author">Шелихова. KZ — Оценка: 10</span>
+                <p data-key="reviews.r1">«Очень гостеприимный хозяин, ухоженная, цветущая территория. Чувствуешь себя, как у себя на даче. Все чисто, приятное место.»</p>
+                <span data-key="reviews.a1">Шелихова. KZ — Оценка: 10</span>
             </div>
+
             <div class="review">
-                <p data-key="review2.text">«Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый. На все мои просьбы сразу отвечали. Очень красивый дворик и бассейн.»</p>
-                <span data-key="review2.author">Елена. BY — Оценка: 9.6</span>
+                <p data-key="reviews.r2">«Очень понравился отель. Дом в старинном национальном стиле. Отель без излишеств, небольшой и чистый. Вкусный завтрак. Персонал внимательный и вежливый.»</p>
+                <span data-key="reviews.a2">Елена. BY — Оценка: 9.6</span>
             </div>
+
             <div class="review">
-                <p data-key="review3.text">«Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома»</p>
-                <span data-key="review3.author">Alex. USA — Оценка: 9.8</span>
+                <p data-key="reviews.r3">«Очень красивый сад и очень хороший семейный персонал, чувствовали себя как дома»</p>
+                <span data-key="reviews.a3">Alex. USA — Оценка: 9.8</span>
             </div>
+
             <div class="review">
-                <p data-key="review4.text">«Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные, разнообразные! Очень рекомендую!»</p>
-                <span data-key="review4.author">Алиса и группа друзей — Оценка: 9.8</span>
+                <p data-key="reviews.r4">«Замечательный дом, прекрасный хозяин, помощь в любых вопросах, чисто, уютно, атмосферно! Завтраки просто великолепные!»</p>
+                <span data-key="reviews.a4">Алиса и группа друзей — Оценка: 9.8</span>
             </div>
+
             <div class="review">
-                <p data-key="review5.text">«Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома»</p>
-                <span data-key="review5.author">Игорь. FIN — Оценка: 9.6</span>
+                <p data-key="reviews.r5">«Отличный отель, великолепный доброжелательный персонал. Чувство, что отдыхаешь дома»</p>
+                <span data-key="reviews.a5">Игорь. FIN — Оценка: 9.6</span>
             </div>
+
             <div class="review">
-                <p data-key="review6.text">«Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Отель расположен в иранском квартале, рядом с центром плова, в шаговой доступности до Регистана (30 мин ходьбы). Скромная обстановка напоминает домашнюю. Тихое, чисто и уютное местечко»</p>
-                <span data-key="review6.author">Элина. USA — Оценка: 10</span>
+                <p data-key="reviews.r6">«Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Тихое, чисто и уютное местечко»</p>
+                <span data-key="reviews.a6">Элина. USA — Оценка: 10</span>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
-        <h2 data-key="faq.title">Часто задаваемые вопросы</h2>
+    <!-- ===== FAQ ===== -->
+    <section id="faq" style="background:#fafafa;">
+        <h2 data-key="faq.title">Часто задаваемые <strong>вопросы</strong></h2>
+
         <div class="faq-container">
             <div class="faq-item active">
                 <div class="faq-question">
@@ -242,6 +290,7 @@
                     Заезд с 14:00, выезд до 12:00. Ранний заезд (с 7:00 до 14:00) — 50% от стоимости суток. Поздний выезд — по запросу, напишите нам заранее.
                 </div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q2">Входит ли завтрак в стоимость?</span>
@@ -249,6 +298,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a2">Да, завтрак включён в стоимость проживания.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q3">Нужна ли предоплата?</span>
@@ -256,6 +306,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a3">Нет. Оплата производится при заезде. Кредитная карта не требуется.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q4">Каковы условия отмены?</span>
@@ -263,6 +314,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a4">Отмена бронирования обходится в 50% от стоимости проживания.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q5">Есть ли парковка?</span>
@@ -270,6 +322,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a5">Да, охраняемая парковка на территории отеля — бесплатно для гостей.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q6">Организуете ли вы трансфер?</span>
@@ -277,6 +330,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a6">Да, организуем трансфер от/до аэропорта и вокзала. Услуга платная — детали уточняются при бронировании.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q7">Можно ли с детьми?</span>
@@ -284,6 +338,7 @@
                 </div>
                 <div class="faq-answer" data-key="faq.a7">Да, мы семейный отель и рады гостям с детьми.</div>
             </div>
+
             <div class="faq-item">
                 <div class="faq-question">
                     <span data-key="faq.q8">Как оплатить при прямом бронировании?</span>
@@ -294,32 +349,42 @@
         </div>
     </section>
 
+    <!-- ===== LOCATION ===== -->
     <section id="location">
-        <h2 data-key="location.title">Наше местоположение</h2>
-        <iframe src="https://www.google.com/maps?q=Самарканд+Отель+Латиф&output=embed" width="100%" height="400" loading="lazy"></iframe>
+        <h2 data-key="location.title">Наше <strong>местоположение</strong></h2>
+        <iframe src="https://www.google.com/maps?q=Самарканд+Отель+Латиф&output=embed" loading="lazy"></iframe>
     </section>
 
+    <!-- ===== CONTACT ===== -->
     <section id="contact">
-        <h2 data-key="contact.title">Контакты</h2>
+        <h2 data-key="contact.title">Свяжитесь <strong>с нами</strong></h2>
+
         <div class="contact-wrapper">
             <div class="contact-info">
                 <div class="contact-item">
-                    <strong>Instagram:</strong>
-                    <a href="https://www.instagram.com/hotel_latif_samarkand" target="_blank">instagram.com/hotel_latif_samarkand</a>
+                    <strong data-key="contact.insta">Instagram</strong>
+                    <a href="https://www.instagram.com/hotel_latif_samarkand" target="_blank">@hotel_latif_samarkand</a>
                 </div>
+
                 <div class="contact-item">
-                    <strong>Email:</strong>
+                    <strong data-key="contact.email">Email</strong>
                     <a href="mailto:hotel.latif.samarkand@gmail.com">hotel.latif.samarkand@gmail.com</a>
                 </div>
+            </div>
+
+            <div class="contact-info">
                 <div class="contact-item">
-                    <strong data-key="contact.phones">Телефоны:</strong><br />
-                    <a href="tel:+998913131783">+998 91 313 17 83</a><br />
-                    <a href="tel:+998906068902">+998 90 606 89 02</a><br />
-                    <a href="tel:+79014704882">+7 (901) 470-48-82</a>
+                    <strong data-key="contact.phones">Телефоны</strong>
+                    <div class="phone-row">
+                        <a href="tel:+998913131783">+998 91 313 17 83</a>
+                        <a href="tel:+998906068902">+998 90 606 89 02</a>
+                        <a href="tel:+79014704882">+7 (901) 470-48-82</a>
+                    </div>
                 </div>
             </div>
+
             <div class="qr-codes">
-                <h3 style="color: #ffd700; margin-bottom: 20px;">Свяжитесь с нами</h3>
+                <h3 data-key="contact.qr">Свяжитесь с нами</h3>
                 <div class="qr-container">
                     <div class="qr-item">
                         <img src="./public/image/inst0.jpg" alt="Instagram QR" />
@@ -330,11 +395,13 @@
         </div>
     </section>
 
+    <!-- ===== MODAL ===== -->
     <div class="gallery-modal" id="galleryModal">
         <span class="close" id="closeModal">×</span>
-        <img id="modalImage" style="max-width:90%;max-height:85vh;border-radius:15px;" />
+        <img id="modalImage" />
     </div>
 
     <script type="module" src="/src/main.js"></script>
+
 </body>
 </html>
