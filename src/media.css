@@ -114,6 +114,26 @@
         text-align: center;
     }
 
+    /* ===== Новая кнопка закрытия ===== */
+    .nav-close-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: 300;
+        color: #0a0a0a;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px 12px;
+        line-height: 1;
+        transition: 0.2s;
+    }
+    .nav-close-btn:hover {
+        opacity: 0.5;
+    }
+
     .hero {
         margin-top: 66px;
         height: 70vh;
