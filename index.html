@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Latif Samarkand</title>
-   <link rel="stylesheet" href="/src/style.css">
-   <link rel="stylesheet" href="/src/media.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/media.css">
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
+    <!-- ===== HEADER - ПРОЗРАЧНОЕ МЕНЮ ===== -->
+    <header id="mainHeader">
         <div class="nav-logo">LATIF<span>HOTEL</span></div>
 
         <div class="burger" id="burger">
@@ -26,10 +26,11 @@
             <a href="#rooms" data-key="nav.rooms">Номера</a>
             <a href="#gallery" data-key="nav.gallery">Галерея</a>
             <a href="#reviews" data-key="nav.reviews">Отзывы</a>
+            <a href="#direct-booking" data-key="nav.direct">Почему напрямую</a>
             <a href="#faq" data-key="nav.faq">FAQ</a>
             <a href="#location" data-key="nav.location">Локация</a>
             <a href="#contact" data-key="nav.contact">Контакты</a>
-            <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank" data-key="nav.book">Забронировать</a>
+            <a href="https://wa.me/9989131311783" class="book-now-btn" target="_blank" data-key="nav.book">Забронировать</a>
             <button class="lang-switch" id="langToggle">En</button>
         </div>
     </header>
@@ -37,9 +38,9 @@
     <!-- ===== HERO ===== -->
     <div class="hero" id="home">
         <div class="slider">
-            <img src="./image/1 (76).jpg" class="active" />
-            <img src="./image/999.jpg" />
-            <img src="./image/100.jpg" />
+            <img src="/public/image/Home3.jpg" class="active" />
+            <img src="/public/image/Home2.jpg" />
+            <img src="/public/image/Home1.jpg" />
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-text">
@@ -54,19 +55,14 @@
     <section id="about">
         <div class="about-container">
             <div class="about-left">
-                <h2 data-key="about.title">Об <strong>отеле</strong></h2>
+                <h2 data-key="about.title">О <strong>нас</strong></h2>
 
                 <p class="about-description" data-key="about.p1">
-                    Hotel Latif Samarkand — это место, где Самарканд встречает вас не только своей древней красотой, но и семейным теплом, которого так часто не хватает в путешествиях. Наш семейный отель открыл свои двери в июле 2010 года. С тех пор он стал домом для сотен гостей со всего мира, которые искали не просто номер для проживания, а атмосферу спокойствия, заботы и настоящего гостеприимства.
+                    Hotel Latif Samarkand — семейный отель, где за каждым гостем стоит живой человек, а не стойка ресепшн. Мы здесь с 2010 года, и за эти годы выработали одно простое правило: гость должен чувствовать себя желанным.
                 </p>
 
                 <p class="about-description" data-key="about.p2">
-                    Мы убеждены, что хороший отель — это больше, чем просто место для ночлега. Это пространство, где гости могут отдохнуть, почувствовать себя желанными и насладиться путешествием. Hotel Latif Samarkand предлагает 18 светлых и комфортных номеров, оборудованных всем необходимым для приятного и расслабляющего отдыха.
-                </p>
-
-                <p class="about-description" data-key="about.p3">
-                    <strong>18 номеров · 7 категорий</strong><br />
-                    Все наши номера светлые, тихие и просторные, с высокими потолками. В каждом — всё необходимое для комфортного отдыха. Номера на третьем этаже оснащены балконом и имеют вид на сад и бассейн.
+                    18 уютных номеров, тенистый сад, бассейн — настоящее спасение от знойного самаркандского лета, — и домашние завтраки, от которых не хочется уходить. А за воротами — рестораны с лучшим пловом в городе, живые улицы старого Самарканда и всё, ради чего сюда едут со всего мира.
                 </p>
 
                 <div class="about-services">
@@ -85,9 +81,9 @@
 
             <div class="about-right">
                 <div class="about-images">
-                    <img src="./image/about1.jpg" alt="Hotel" class="about-img about-img-1" />
-                    <img src="./image/about2.jpg" alt="Hotel" class="about-img about-img-2" />
-                    <img src="./image/about3.jpg" alt="Hotel" class="about-img about-img-3" />
+                    <img src="/public/image/Hotel1.jpg" alt="Hotel" class="about-img about-img-1" />
+                    <img src="/public/image/Hotel2.jpg" alt="Hotel" class="about-img about-img-2" />
+                    <img src="/public/image/Hotel3.jpg" alt="Hotel" class="about-img about-img-3" />
                 </div>
 
                 <div class="about-extra-right">
@@ -163,79 +159,295 @@
         </div>
     </section>
 
-    <!-- ===== ROOMS ===== -->
+    <!-- ===== ROOMS - УЛУЧШЕННЫЕ КАРТОЧКИ ===== -->
     <section id="rooms">
-        <h2 data-key="rooms.title">Номера <strong>и цены</strong></h2>
+        <h2 data-key="rooms.title">Наши <strong>номера</strong></h2>
 
-        <div class="room-grid">
-            <a href="./src/pages/room/room1.html" class="room-link">
-                <div class="room">
-                    <img src="./image/1 (89).jpg" alt="Standard" />
-                    <p data-key="rooms.r1">Стандарт — от $50</p>
+        <div class="rooms-grid">
+            <!-- Room 1 -->
+            <div class="room-card">
+                <div class="room-gallery" data-room="0">
+                    <div class="gallery-track">
+                        <img src="/public/image/room1.1.jpg" alt="Стандартный двуместный" />
+                        <img src="/public/image/room1.2.jpg" alt="Стандартный двуместный" />
+                        <img src="/public/image/room1.3.jpg" alt="Стандартный двуместный" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </a>
+                <div class="room-info">
+                    <div class="room-badge" data-key="room1.badge">Рекомендуемый номер</div>
+                    <h3>
+                        <span data-key="room1.title">Standard Double Room</span>
+                        <span data-key="room1.title_ru" style="display:none;">Стандартный двухместный номер с двуспальной кроватью</span>
+                    </h3>
+                    <div class="room-meta" data-key="room1.meta">6 rooms · up to 2 guests · 1 double bed · from <strong>$50</strong> Single occupancy: from <strong>$40</strong></div>
+                    <p class="room-desc" data-key="room1.desc">A bright, quiet room for couples with a large double bed. Views of the garden, inner courtyard or city rooftops — and high ceilings that give a feeling of space. Everything you need to unwind after a day among Samarkand's madrasahs and bazaars.</p>
+                    <div class="room-amenities">
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Electric kettle</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room1.view"><strong>Views:</strong> garden · inner courtyard · city</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room1.book">Book now</a>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room2.html" class="room-link">
-                <div class="room">
-                    <img src="./image/3rooms.jpg" alt="Comfort" />
-                    <p data-key="rooms.r2">Комфорт — от $70</p>
+            <!-- Room 2 -->
+            <div class="room-card reverse">
+                <div class="room-info">
+                    <div class="room-badge" data-key="room2.badge">РЕКОМЕНДУЕМЫЙ НОМЕР</div>
+                    <h3>
+                        <span data-key="room2.title">Standard Twin Room</span>
+                        <span data-key="room2.title_ru" style="display:none;">Стандартный двухместный номер с двумя раздельными кроватями</span>
+                    </h3>
+                    <div class="room-meta" data-key="room2.meta">4 rooms · up to 2 guests · 2 single beds · 25 m² · from <strong>$50</strong> Single occupancy: from <strong>$40</strong></div>
+                    <p class="room-desc" data-key="room2.desc">A spacious room with two separate beds — ideal for friends, colleagues or couples who prefer individual beds. Views of the garden and inner courtyard, a quiet atmosphere and everything for a full night's rest.</p>
+                    <div class="room-amenities">
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Electric kettle</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room2.view"><strong>Views:</strong> garden · inner courtyard · city</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room2.book">Book now</a>
                 </div>
-            </a>
+                <div class="room-gallery" data-room="1">
+                    <div class="gallery-track">
+                        <img src="/public/image/room2.1.jpg" alt="Стандартный с раздельными кроватями" />
+                        <img src="/public/image/room2.2.jpg" alt="Стандартный с раздельными кроватями" />
+                        <img src="/public/image/room2.3.jpg" alt="Стандартный с раздельными кроватями" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room3.html" class="room-link">
-                <div class="room">
-                    <img src="./image/4rooms.jpg" alt="Family" />
-                    <p data-key="rooms.r3">Семейный — от $90</p>
+            <!-- Room 3 -->
+            <div class="room-card">
+                <div class="room-gallery" data-room="2">
+                    <div class="gallery-track">
+                        <img src="/public/image/room3.1.jpg" alt="Стандартный трёхместный" />
+                        <img src="/public/image/room3.2.jpg" alt="Стандартный трёхместный" />
+                        <img src="/public/image/room3.3.jpg" alt="Стандартный трёхместный" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </a>
+                <div class="room-info">
+                    <div class="room-badge" data-key="room3.badge">РЕКОМЕНДУЕМЫЙ НОМЕР</div>
+                    <h3>
+                        <span data-key="room3.title">Standard Triple Room</span>
+                        <span data-key="room3.title_ru" style="display:none;">Стандартный трёхместный номер</span>
+                    </h3>
+                    <div class="room-meta" data-key="room3.meta">2 rooms · up to 3 guests · 3 single beds · 22 m² · from <strong>$65</strong></div>
+                    <p class="room-desc" data-key="room3.desc">A cosy room with three separate beds — a good choice for a small group or a family with a child. Views of the garden, inner courtyard and city, plus everything needed for a comfortable stay.</p>
+                    <div class="room-amenities">
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Electric kettle</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room3.view"><strong>Views:</strong> garden · inner courtyard · city</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room3.book">Book now</a>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room4.html" class="room-link">
-                <div class="room">
-                    <img src="./image/11room.jpg" alt="Lux" />
-                    <p data-key="rooms.r4">Люкс с балконом — от $120</p>
+            <!-- Room 4 -->
+            <div class="room-card reverse">
+                <div class="room-info">
+                    <div class="room-badge" data-key="room4.badge">Рекомендуемый номер</div>
+                    <h3>
+                        <span data-key="room4.title">Family Two-Room Suite</span>
+                        <span data-key="room4.title_ru" style="display:none;">Семейный двухкомнатный номер</span>
+                    </h3>
+                    <div class="room-meta" data-key="room4.meta">1 room · up to 4 guests · 1 double + 2 single beds · from <strong>$85</strong></div>
+                    <p class="room-desc" data-key="room4.desc">Our most spacious option: two separate rooms and a private bathroom. Children sleep in their own room, adults relax in theirs — the very room guests describe as feeling just like home. Perfect for families and small groups.</p>
+                    <div class="room-amenities">
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Electric kettle</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room4.view"><strong>Views:</strong> garden · inner courtyard · city</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room4.book">Book now</a>
                 </div>
-            </a>
+                <div class="room-gallery" data-room="3">
+                    <div class="gallery-track">
+                        <img src="/public/image/room4.1.jpg" alt="Семейный двухкомнатный" />
+                        <img src="/public/image/room4.2.jpg" alt="Семейный двухкомнатный" />
+                        <img src="/public/image/room4.3.jpg" alt="Семейный двухкомнатный" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room5.html" class="room-link">
-                <div class="room">
-                    <img src="./image/about1.jpg" alt="Deluxe" />
-                    <p data-key="rooms.r5">Делюкс — от $100</p>
+            <!-- Room 5 -->
+            <div class="room-card">
+                <div class="room-gallery" data-room="4">
+                    <div class="gallery-track">
+                        <img src="/public/image/room5.1.jpg" alt="Улучшенный двухместный" />
+                        <img src="/public/image/room5.2.jpg" alt="Улучшенный двухместный" />
+                        <img src="/public/image/room5.3.jpg" alt="Улучшенный двухместный" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </a>
+                <div class="room-info">
+                    <div class="room-badge" data-key="room5.badge">РЕКОМЕНДУЕМЫЙ НОМЕР</div>
+                    <h3>
+                        <span data-key="room5.title">Superior King Room with Balcony (3rd floor)</span>
+                        <span data-key="room5.title_ru" style="display:none;">Улучшенный двухместный номер с двуспальной кроватью (3-й этаж)</span>
+                    </h3>
+                    <div class="room-meta" data-key="room5.meta">3 rooms · up to 2 guests · 1 double bed · 25 m² · from <strong>$55</strong></div>
+                    <p class="room-desc" data-key="room5.desc">Our most comfortable room for couples: more space, a large double bed, soundproofing and a private balcony with city views. Start the morning with a cup of tea in the open air, then head out to discover Samarkand.</p>
+                    <div class="room-amenities">
+                        <span>Balcony</span>
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room5.view"><strong>Views:</strong> balcony · city</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room5.book">Book now</a>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room6.html" class="room-link">
-                <div class="room">
-                    <img src="./image/about2.jpg" alt="Superior" />
-                    <p data-key="rooms.r6">Супериор — от $80</p>
+            <!-- Room 6 -->
+            <div class="room-card reverse">
+                <div class="room-info">
+                    <div class="room-badge" data-key="room6.badge">РЕКОМЕНДУЕМЫЙ НОМЕР</div>
+                    <h3>
+                        <span data-key="room6.title">Superior Triple Room with Balcony (3 single beds)</span>
+                        <span data-key="room6.title_ru" style="display:none;">Улучшенный трёхместный номер с балконом (3 односпальные кровати)</span>
+                    </h3>
+                    <div class="room-meta" data-key="room6.meta">1 room · up to 3 guests · 3 single beds · 30 m² · from <strong>$70</strong></div>
+                    <p class="room-desc" data-key="room6.desc">The most spacious room on the third floor: 30 m², three separate beds, a balcony with views of the garden and pool. Soundproofing, fresh air from the balcony and a quiet retreat after a full day in the city.</p>
+                    <div class="room-amenities">
+                        <span>Balcony</span>
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room6.view"><strong>Views:</strong> pool · balcony</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room6.book">Book now</a>
                 </div>
-            </a>
+                <div class="room-gallery" data-room="5">
+                    <div class="gallery-track">
+                        <img src="/public/image/room6.1.jpg" alt="Улучшенный трёхместный с балконом" />
+                        <img src="/public/image/room6.2.jpg" alt="Улучшенный трёхместный с балконом" />
+                        <img src="/public/image/room6.3.jpg" alt="Улучшенный трёхместный с балконом" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
 
-            <a href="./src/pages/room/room7.html" class="room-link">
-                <div class="room">
-                    <img src="./image/about3.jpg" alt="Premium" />
-                    <p data-key="rooms.r7">Премиум — от $110</p>
+            <!-- Room 7 -->
+            <div class="room-card">
+                <div class="room-gallery" data-room="6">
+                    <div class="gallery-track">
+                        <img src="/public/image/room7.1.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
+                        <img src="/public/image/room7.2.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
+                        <img src="/public/image/room7.3.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
+                    </div>
+                    <button class="gallery-btn prev">‹</button>
+                    <button class="gallery-btn next">›</button>
+                    <div class="gallery-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </a>
+                <div class="room-info">
+                    <div class="room-badge" data-key="room7.badge">РЕКОМЕНДУЕМЫЙ НОМЕР</div>
+                    <h3>
+                        <span data-key="room7.title">Superior Triple Room with Pool View</span>
+                        <span data-key="room7.title_ru" style="display:none;">Улучшенный трёхместный номер с видом на бассейн</span>
+                    </h3>
+                    <div class="room-meta" data-key="room7.meta">1 room · up to 3 guests · 1 double + 1 single bed · 25 m² · from <strong>$70</strong></div>
+                    <p class="room-desc" data-key="room7.desc">A comfortable room for a couple with a child or three guests: a large double bed for adults and a separate single bed. Balcony with views of the garden and pool, soundproofing and superior finish — for a truly restful stay.</p>
+                    <div class="room-amenities">
+                        <span>Balcony</span>
+                        <span>Air conditioning</span>
+                        <span>Heating</span>
+                        <span>TV</span>
+                        <span>Hairdryer</span>
+                        <span>Wi-Fi</span>
+                    </div>
+                    <div class="room-view" data-key="room7.view"><strong>Views:</strong> pool · balcony</div>
+                    <a href="https://wa.me/9989131311783" target="_blank" class="room-book-btn" data-key="room7.book">Book now</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ===== GALLERY ===== -->
-    <section id="gallery" style="background:#fafafa;">
+    <!-- ===== GALLERY CAROUSEL ===== -->
+    <section id="gallery">
         <h2 data-key="gallery.title">Галерея <strong>отеля</strong></h2>
 
-        <div class="gallery-grid" id="galleryGrid">
-            <img src="./image/1 (70).jpg" alt="Gallery" />
-            <img src="./image/1 (76).jpg" alt="Gallery" />
-            <img src="./image/1 (82).jpg" alt="Gallery" />
-            <img src="./image/1 (95).jpg" alt="Gallery" />
-            <img src="./image/1 (89).jpg" alt="Gallery" />
-            <img src="./image/3rooms.jpg" alt="Gallery" />
-            <img src="./image/4rooms.jpg" alt="Gallery" />
-            <img src="./image/about1.jpg" alt="Gallery" />
-            <img src="./image/about2.jpg" alt="Gallery" />
-            <img src="./image/about3.jpg" alt="Gallery" />
-            <img src="./image/999.jpg" alt="Gallery" />
-            <img src="./image/100.jpg" alt="Gallery" />
+        <div class="gallery-carousel" id="mainGallery">
+            <div class="gallery-track-main" id="galleryTrackMain">               
+                <img src="/public/image/Gallery2.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery3.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery4.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery5.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery6.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery7.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery8.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery9.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery10.jpg" alt="Gallery" />
+                <img src="/public/image/Gallery11.jpg" alt="Gallery" />
+                
+            </div>
+
+            <button class="gallery-btn-main prev-main" id="galleryPrev">‹</button>
+            <button class="gallery-btn-main next-main" id="galleryNext">›</button>
+
+            <div class="gallery-dots-main" id="galleryDotsMain"></div>
         </div>
     </section>
 
@@ -273,6 +485,51 @@
                 <p data-key="reviews.r6">«Прекрасный, очень внимательный и отзывчивый хозяин. Встречают, как добрых старых знакомых. Тихое, чисто и уютное местечко»</p>
                 <span data-key="reviews.a6">Элина. USA — Оценка: 10</span>
             </div>
+        </div>
+    </section>
+
+    <!-- ===== DIRECT BOOKING SECTION ===== -->
+    <section id="direct-booking" style="background:#fafafa;">
+        <div class="direct-container">
+            <h2><strong>ПОЧЕМУ БРОНИРОВАТЬ НАПРЯМУЮ</strong></h2>
+            <p class="direct-sub"><strong>Бронируйте на нашем сайте — это выгоднее</strong><br />Когда вы бронируете напрямую у нас, а не через площадки — вы получаете больше:</p>
+
+            <div class="direct-grid">
+                <div class="direct-item">
+                    <div class="direct-icon">✓</div>
+                    <div class="direct-text">
+                        <h4 data-key="direct.b1">Лучшая цена.</h4>
+                        <p data-key="direct.b1d">Никаких комиссий и скрытых наценок.</p>
+                    </div>
+                </div>
+                <div class="direct-item">
+                    <div class="direct-icon">✓</div>
+                    <div class="direct-text">
+                        <h4 data-key="direct.b2">Прямая связь с хозяевами.</h4>
+                        <p data-key="direct.b2d">Любой вопрос заранее — трансфер, ранний заезд, экскурсии, особые пожелания.</p>
+                    </div>
+                </div>
+                <div class="direct-item">
+                    <div class="direct-icon">✓</div>
+                    <div class="direct-text">
+                        <h4 data-key="direct.b3">Гибкость.</h4>
+                        <p data-key="direct.b3d">Индивидуальный подход к каждому бронированию.</p>
+                    </div>
+                </div>
+                <div class="direct-item">
+                    <div class="direct-icon">✓</div>
+                    <div class="direct-text">
+                        <h4 data-key="direct.b4">Оплата при заезде.</h4>
+                        <p data-key="direct.b4d">Предоплата не требуется, кредитная карта не нужна.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:1rem; color:#555; font-weight:300; margin-bottom:24px;" data-key="direct.bottom">
+                Нашли цену ниже? Напишите нам — мы постараемся сделать лучшее предложение.
+            </p>
+
+            <a href="https://wa.me/9989131311783" target="_blank" class="direct-book-btn" data-key="direct.btn">Забронировать сейчас</a>
         </div>
     </section>
 
@@ -395,13 +652,13 @@
         </div>
     </section>
 
-    <!-- ===== MODAL ===== -->
+   
     <div class="gallery-modal" id="galleryModal">
         <span class="close" id="closeModal">×</span>
         <img id="modalImage" />
     </div>
 
-    <script type="module" src="/src/main.js"></script>
+ <script type="module" src="/src/main.js"></script>
 
 </body>
 </html>
