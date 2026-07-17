@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Latif Samarkand</title>
-    <link rel="stylesheet" href="/src/style.css">
-    <link rel="stylesheet" href="/src/media.css">
-    
+     <link rel="stylesheet" href="/src/style.css">
+     <link rel="stylesheet" href="/src/media.css">
 </head>
 <body>
 
-    <!-- ===== HEADER - ПРОЗРАЧНОЕ МЕНЮ ===== -->
+    <!-- ===== HEADER - ПОЛНОСТЬЮ ПРОЗРАЧНОЕ МЕНЮ ===== -->
     <header id="mainHeader">
         <div class="nav-logo">LATIF<span>HOTEL</span></div>
 
@@ -21,7 +20,6 @@
         </div>
 
         <div class="nav-links" id="navLinks">
-            <!-- Кнопка закрытия -->
             <button class="nav-close-btn" id="navCloseBtn">✕</button>
 
             <a href="#home" data-key="nav.home">Главная</a>
@@ -119,21 +117,21 @@
                 <div class="around-col">
                     <h3 data-key="around.nearby">Что рядом:</h3>
                     <ul>
-                        <li><span data-key="around.n1">Ресторан Каримбек (лучший плов в городе)</span> <span class="distance">~250 м</span></li>
-                        <li><span data-key="around.n2">Сиабский базар (специи, сухофрукты, лепёшки)</span> <span class="distance">~1 км</span></li>
-                        <li><span data-key="around.n3">Мавзолей Гур-Эмир (усыпальница Амира Тимура)</span> <span class="distance">~2,9 км</span></li>
-                        <li><span data-key="around.n4">Государственный музей истории культуры Узбекистана</span> <span class="distance">~1,7 км</span></li>
-                        <li><span data-key="around.n5">Регистан (площадь трёх медресе)</span> <span class="distance">~3,6 км</span></li>
-                        <li><span data-key="around.n6">Мечеть Биби-Ханым</span> <span class="distance">~3 км</span></li>
-                        <li><span data-key="around.n7">Медресе Улугбека</span> <span class="distance">~3,5 км</span></li>
+                        <li><span data-key="around.n1">Ресторан Каримбек (лучший плов в городе)</span> <span class="distance">250 м</span></li>
+                        <li><span data-key="around.n2">Сиабский базар (специи, сухофрукты, лепёшки)</span> <span class="distance">5,8 км</span></li>
+                        <li><span data-key="around.n3">Мавзолей Гур-Эмир (усыпальница Амира Тимура)</span> <span class="distance">2,9 км</span></li>
+                        <li><span data-key="around.n4">Государственный музей истории культуры Узбекистана</span> <span class="distance">1,7 км</span></li>
+                        <li><span data-key="around.n5">Регистан (площадь трёх медресе)</span> <span class="distance">3,6 км</span></li>
+                        <li><span data-key="around.n6">Мечеть Биби-Ханым</span> <span class="distance">3 км</span></li>
+                        <li><span data-key="around.n7">Медресе Улугбека</span> <span class="distance">3,5 км</span></li>
                     </ul>
                 </div>
 
                 <div class="around-col">
                     <h3 data-key="around.how">Как добраться:</h3>
                     <ul>
-                        <li><span data-key="around.h1">Международный аэропорт Самарканда (SKD)</span> <span class="distance">~9 км</span></li>
-                        <li><span data-key="around.h2">Железнодорожный вокзал</span> <span class="distance">~5 км</span></li>
+                        <li><span data-key="around.h1">Международный аэропорт Самарканда (SKD)</span> <span class="distance">9 км</span></li>
+                        <li><span data-key="around.h2">Железнодорожный вокзал</span> <span class="distance">5 км</span></li>
                         <li><span data-key="around.h3">Трансфер от/до аэропорта и вокзала</span> <span class="distance">платно</span></li>
                     </ul>
                 </div>
@@ -163,7 +161,7 @@
         </div>
     </section>
 
-    <!-- ===== ROOMS - УЛУЧШЕННЫЕ КАРТОЧКИ ===== -->
+    <!-- ===== ROOMS ===== -->
     <section id="rooms">
         <h2 data-key="rooms.title">Наши <strong>номера</strong></h2>
 
@@ -434,7 +432,7 @@
         <h2 data-key="gallery.title">Галерея <strong>отеля</strong></h2>
 
         <div class="gallery-carousel" id="mainGallery">
-            <div class="gallery-track-main" id="galleryTrackMain">               
+            <div class="gallery-track-main" id="galleryTrackMain">
                 <img src="/public/image/Gallery2.jpg" alt="Gallery" />
                 <img src="/public/image/Gallery3.jpg" alt="Gallery" />
                 <img src="/public/image/Gallery4.jpg" alt="Gallery" />
@@ -445,7 +443,6 @@
                 <img src="/public/image/Gallery9.jpg" alt="Gallery" />
                 <img src="/public/image/Gallery10.jpg" alt="Gallery" />
                 <img src="/public/image/Gallery11.jpg" alt="Gallery" />
-                
             </div>
 
             <button class="gallery-btn-main prev-main" id="galleryPrev">‹</button>
@@ -656,14 +653,12 @@
         </div>
     </section>
 
-   
     <div class="gallery-modal" id="galleryModal">
         <span class="close" id="closeModal">×</span>
         <img id="modalImage" />
     </div>
 
-
-<script type="module" src="/src/main.js"></script>
+   <script type="module" src="/src/main.js"></script>
 
 </body>
 </html>
