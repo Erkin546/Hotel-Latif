@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Latif Samarkand</title>
-     <link rel="stylesheet" href="/src/style.css">
-     <link rel="stylesheet" href="/src/media.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/media.css">
 </head>
 <body>
 
-    
     <header id="mainHeader">
-        <div class="nav-logo">LATIF  <span> HOTEL</span></div>
+        <div class="nav-logo">LATIF <span>HOTEL</span></div>
 
         <div class="burger" id="burger">
             <div></div>
@@ -32,7 +31,7 @@
             <a href="#faq" data-key="nav.faq">FAQ</a>
             <a href="#location" data-key="nav.location">Локация</a>
             <a href="#contact" data-key="nav.contact">Контакты</a>
-            <a href="https://wa.me/9989131311783" class="book-now-btn" target="_blank" data-key="nav.book">Забронировать</a>
+            <a href="https://wa.me/998913131783" class="book-now-btn" target="_blank" data-key="nav.book">Забронировать</a>
             <button class="lang-switch" id="langToggle">En</button>
         </div>
     </header>
@@ -57,7 +56,7 @@
     <section id="about">
         <div class="about-container">
             <div class="about-left">
-                <h2 data-key="about.title">О <strong>нас</strong></h2>
+                <h2 data-key="about.title"> <strong>О нас</strong></h2>
 
                 <p class="about-description" data-key="about.p1">
                     Hotel Latif Samarkand — семейный отель, где за каждым гостем стоит живой человек, а не стойка ресепшн. Мы здесь с 2010 года, и за эти годы выработали одно простое правило: гость должен чувствовать себя желанным.
@@ -79,17 +78,12 @@
                         <div class="service-item" data-key="about.s7">Общая кухня и холодильник для гостей</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="about-right">
-                <div class="about-images">
-                    <img src="/public/image/Hotel1.jpg" alt="Hotel" class="about-img about-img-1" />
-                    <img src="/public/image/Hotel2.jpg" alt="Hotel" class="about-img about-img-2" />
-                    <img src="/public/image/Hotel3.jpg" alt="Hotel" class="about-img about-img-3" />
-                </div>
 
-                <div class="about-extra-right">
-                    <div class="services-title" data-key="about.extra">Дополнительно (платно):</div>
+
+                <!-- Дополнительно (платно) — теперь в левой колонке -->
+                <div class="about-extra-left" style="margin-top: 100px;">
+                    <div class="services-title" data-key="about.extra">Дополнительные услуги</div>
                     <div class="services-grid">
                         <div class="service-item" data-key="about.e1">Трансфер от/до аэропорта и вокзала</div>
                         <div class="service-item" data-key="about.e2">Сезонный открытый бассейн</div>
@@ -98,6 +92,18 @@
                         <div class="service-item" data-key="about.e5">Помощь в организации экскурсий</div>
                         <div class="service-item" data-key="about.e6">Хранение багажа</div>
                     </div>
+                </div>
+            </div>
+
+            <div class="about-right">
+                <!-- Новая сетка: 4 фото + место для 2 фото снизу -->
+                <div class="about-images-grid">
+                    <img src="/public/image/1.jpg" alt="Hotel" class="about-img about-img-1" />
+                    <img src="/public/image/2.jpg" alt="Hotel" class="about-img about-img-2" />
+                    <img src="/public/image/3.jpg" alt="Hotel" class="about-img about-img-3" />
+                    <img src="/public/image/Hotel4.jpg" alt="Hotel" class="about-img about-img-4" />
+                    <img src="/public/image/Hotel6.jpg" alt="Hotel" class="about-img about-img-5" />
+                    <img src="/public/image/7.jpg" alt="Hotel" class="about-img about-img-6" />
                 </div>
             </div>
         </div>
@@ -173,11 +179,15 @@
                         <img src="/public/image/room1.1.jpg" alt="Стандартный двуместный" />
                         <img src="/public/image/room1.2.jpg" alt="Стандартный двуместный" />
                         <img src="/public/image/room1.3.jpg" alt="Стандартный двуместный" />
+                        <img src="/public/image/room1.4.jpg" alt="Стандартный двуместный" />
+                        <img src="/public/image/room1.5.jpg" alt="Стандартный двуместный" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -229,11 +239,15 @@
                         <img src="/public/image/room2.1.jpg" alt="Стандартный с раздельными кроватями" />
                         <img src="/public/image/room2.2.jpg" alt="Стандартный с раздельными кроватями" />
                         <img src="/public/image/room2.3.jpg" alt="Стандартный с раздельными кроватями" />
+                        <img src="/public/image/room2.4.jpg" alt="Стандартный с раздельными кроватями" />
+                        <img src="/public/image/room2.5.jpg" alt="Стандартный с раздельными кроватями" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -247,11 +261,15 @@
                         <img src="/public/image/room3.1.jpg" alt="Стандартный трёхместный" />
                         <img src="/public/image/room3.2.jpg" alt="Стандартный трёхместный" />
                         <img src="/public/image/room3.3.jpg" alt="Стандартный трёхместный" />
+                        <img src="/public/image/room3.4.jpg" alt="Стандартный трёхместный" />
+                        <img src="/public/image/room3.5.jpg" alt="Стандартный трёхместный" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -303,11 +321,15 @@
                         <img src="/public/image/room4.1.jpg" alt="Семейный двухкомнатный" />
                         <img src="/public/image/room4.2.jpg" alt="Семейный двухкомнатный" />
                         <img src="/public/image/room4.3.jpg" alt="Семейный двухкомнатный" />
+                        <img src="/public/image/room4.4.jpg" alt="Семейный двухкомнатный" />
+                        <img src="/public/image/room4.5.jpg" alt="Семейный двухкомнатный" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -321,11 +343,15 @@
                         <img src="/public/image/room5.1.jpg" alt="Улучшенный двухместный" />
                         <img src="/public/image/room5.2.jpg" alt="Улучшенный двухместный" />
                         <img src="/public/image/room5.3.jpg" alt="Улучшенный двухместный" />
+                        <img src="/public/image/room5.4.jpg" alt="Улучшенный двухместный" />
+                        <img src="/public/image/room5.5.jpg" alt="Улучшенный двухместный" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -377,11 +403,15 @@
                         <img src="/public/image/room6.1.jpg" alt="Улучшенный трёхместный с балконом" />
                         <img src="/public/image/room6.2.jpg" alt="Улучшенный трёхместный с балконом" />
                         <img src="/public/image/room6.3.jpg" alt="Улучшенный трёхместный с балконом" />
+                        <img src="/public/image/room6.4.jpg" alt="Улучшенный трёхместный с балконом" />
+                        <img src="/public/image/room6.5.jpg" alt="Улучшенный трёхместный с балконом" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -395,11 +425,15 @@
                         <img src="/public/image/room7.1.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
                         <img src="/public/image/room7.2.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
                         <img src="/public/image/room7.3.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
+                        <img src="/public/image/room7.4.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
+                        <img src="/public/image/room7.5.jpg" alt="Улучшенный трёхместный с видом на бассейн" />
                     </div>
                     <button class="gallery-btn prev">‹</button>
                     <button class="gallery-btn next">›</button>
                     <div class="gallery-dots">
                         <span class="active"></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                     </div>
@@ -433,16 +467,16 @@
 
         <div class="gallery-carousel" id="mainGallery">
             <div class="gallery-track-main" id="galleryTrackMain">
-                <img src="/public/image/Gallery2.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery3.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery4.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery5.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery6.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery7.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery8.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery9.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery10.jpg" alt="Gallery" />
-                <img src="/public/image/Gallery11.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel1.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel2.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel3.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel4.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel5.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel6.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel7.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel8.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel9.jpg" alt="Gallery" />
+                <img src="/public/image/Hotel10.jpg" alt="Gallery" />
             </div>
 
             <button class="gallery-btn-main prev-main" id="galleryPrev">‹</button>
